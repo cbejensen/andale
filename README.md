@@ -1,0 +1,1 @@
+A searchable, expandable database that provides an easy way to access pictures, manuals, links and information about brands and products. Ideal for customer service and tech support agents.

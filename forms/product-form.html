@@ -1,0 +1,77 @@
+<form name="productForm" class="data-form" ng-submit="productForm.$valid && submitProduct(product)">
+  
+  <div class="form-title" ng-show="isNew">Add Product</div>
+  <div class="form-title" ng-hide="isNew">Edit <strong>{{::product.name}}</strong></div>
+  
+  <div class="form-buttons" ng-hide="isNew">
+    <button type="button" class="button-delete btn btn-xs btn-danger"
+      ng-click="removeProduct()">Delete</button>
+  </div>
+  
+  <div class="form-product-brand" ng-show="isNew">
+    Brand<span class="red-asterisk"> *</span><br />
+    <select ng-options="brand.name as brand.name for brand in brands" ng-model="product.brand" required></select>
+  </div><!-- //not sure why, but 'required' does nothing on select tags when ng-model is present
+--><div class="form-product-name add-product-input">
+    Name<span class="red-asterisk"> *</span><br />
+    <input ng-model="product.name" required><br />
+  </div>
+
+  <div class="form-product-subtitle-container form-row">
+    Subtitle / Short Description<br/>
+    <input type="text" ng-model="product.subtitle">
+  </div>
+  
+  <div class="form-row row">
+    <div class="add-product-url-field col-xs-6">
+      Product Page URL<br/>
+      <input placeholder="http://www.example.com" ng-model="product.url"><br />
+    </div>
+    <div class="add-product-url-field col-xs-6">
+      Manual URL<br/>
+      <input placeholder="http://www.example.com" ng-model="product.manualUrl"><br />
+    </div>
+  </div>
+  
+  <div class="form-row row">
+    <div class="add-product-img-container col-xs-12">
+      Images (URL)
+      <button class="add-img-button btn btn-success" type="button"
+        ng-click="addProductImg()">+ Add Image</button><br />
+      <input type="text" class="add-img-input" ng-repeat="img in product.images track by $index"
+        ng-model="product.images[$index]" placeholder="http://www.example.com">
+    </div>
+  </div>
+    
+  <div class="form-product-specs-container form-row">
+    Specs
+    <!-- <button class="add-bullets-button btn btn-success" type="button"
+      ng-mousedown="addBullets()">+ Add Bullets</button><br /> -->
+    <textarea type="text" class="product-specs" ng-model="product.specs"></textarea>
+  </div>
+  
+  <div class="form-row row">
+    <div class="faq-container col-xs-12">
+      FAQ's<button class="add-faq-button btn btn-success" type="button"
+        ng-click="addProductFaq(product)">+ Add FAQ</button><br />
+      <div class="faq-set" ng-repeat="faq in product.faqs track by $index">
+        <input class="faq-question-input" type="text" placeholder="Question"
+          ng-model="product.faqs[$index].question">
+        <input class="faq-answer-input" type="text" placeholder="Answer"
+          ng-model="product.faqs[$index].answer">
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    Warranty<span class="red-asterisk"> *</span><br/>
+    <input ng-model="product.warranty" required><br />
+  </div>
+  
+  <div class="form-buttons form-row">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" ng-click="cancelProduct()"
+      class="btn btn-danger">Cancel</button>
+  </div>
+
+</form>

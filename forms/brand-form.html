@@ -1,0 +1,38 @@
+<form name="brandForm" class="data-form" ng-submit="brandForm.$valid && submitBrand(brand)">
+  
+  <div class="form-title" ng-show="isNew">Add Brand</div>
+  <div class="form-title" ng-hide="isNew">Edit <strong>{{::brand.name}}</strong></div>
+  
+  <div class="form-buttons" ng-hide="isNew">
+    <button type="button" class="button-delete btn btn-xs btn-danger"
+      ng-click="removeBrand()">Delete</button>
+  </div>
+
+  <div class="form-row">
+    Name<span class="red-asterisk"> *</span><br/>
+    <input ng-model="brand.name" required>
+  </div>
+  <div class="form-row">
+    Logo URL<br/>
+    <input type="url" ng-model="brand.logo"><br />
+  </div>
+  <div class="form-row">
+    Web Site URL<br/>
+    <input type="url" ng-model="brand.url"><br />
+  </div>
+  <div class="form-row">
+    Phone number<br/>
+    <input ng-model="brand.phone"><br />
+  </div>
+  <div class="form-row">
+    Show name?
+    <input type="checkbox" value="false" ng-model="brand.showName">
+  </div>
+  
+  <div class="form-buttons form-row">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" ng-click="cancelBrand()"
+      class="btn btn-danger">Cancel</button>
+  </div>
+
+</form>

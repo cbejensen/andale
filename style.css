@@ -1,0 +1,437 @@
+.test {
+  font-size: 2em;
+  border: 3px solid red;
+}
+
+a {
+  color: black;
+}
+
+.add-img-button,.add-bullets-button, .add-faq-button {
+  padding: 1px 3px;
+  font-size: .8em;
+  float: right;
+  border-radius: 0;
+}
+
+.add-img-input, .product-specs, .product-faq-container > div {
+  margin-top: 2px;
+}
+
+.brand-edit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.brand-header {
+  display: inline-block;
+}
+
+.brand-header img {
+  max-height: 150px;
+}
+
+.brand-header div {
+  font-size: 30px;
+}
+
+.brand-header-container {
+  position: relative;
+  text-align: center;
+  display: block;
+}
+
+.button-delete {
+  margin: auto;
+}
+
+.data-form {
+  margin: auto;
+}
+
+.data-form input:not([type=checkbox]), .data-form select {
+  height: 30px;
+  width: 100%;
+  font-size: 1.2em;
+  padding-left: 5px;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 0;
+  background-color: white;
+}
+
+.data-form input[type=checkbox] {
+  margin-left: 10px;
+}
+
+.data-form textarea {
+  height: 100px;
+  width: 100%;
+  font-size: 1.2em;
+  padding-left: 5px;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 0;
+  background-color: white;
+  resize: vertical;
+}
+
+.edit-product-name-box input {
+  margin: 15px 0;
+  width: 100%;
+  font-size: 2em;
+  padding: 5px;
+}
+
+.edit-product-name-box span {
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.edit-product-name-button-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.edit-spec-row, .edit-img-row {
+  width: 100%;
+}
+
+.extra-spec, .extra-img {
+  margin-top: 3px;
+  width: 100%;
+}
+
+.fa-arrow-left, .fa-arrow-right {
+  width: 30px;
+  height: 30px;
+}
+
+.fa-arrow-left:hover, .fa-arrow-right:hover {
+  cursor: pointer;
+}
+
+.faq-button:hover {
+  color: red
+}
+
+.faq-answer-input {
+  border-top: 0 !important
+}
+
+.faq-question-input {
+  font-weight: bold;
+}
+
+.faq-set {
+  margin: 2px 0;
+  width: 100%;
+}
+
+form {
+  max-width: 800px;
+}
+
+.form-box {
+  opacity: 1;
+  z-index: 3;
+  width: 80%;
+  max-width: 1000px;
+  max-height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  background-color: white;
+  padding: 10px;
+  border: 2px solid black;
+  overflow: scroll;
+}
+
+.form-buttons {
+  text-align: center;
+}
+
+.form-row {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.form-row div {
+  display: inline-block;
+}
+
+.form-product-brand, .edit-product-brand {
+  width: 25%;
+  margin-right: 5%;
+  display: inline-block;
+}
+
+.form-product-name {
+  width: 70%;
+  display: inline-block;
+}
+
+.form-product-name input {
+  font-weight: bold;
+}
+
+.form-product-specs-container div {
+  float: right;
+  font-size: 0.8em;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+.hazy-background {
+  background-color: #FBFBFB;
+  opacity: .9;
+  z-index: 3;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+#header {
+  background-color: #E32F21;
+  position: fixed;
+  width: 100%;
+  height: 120px;
+  z-index: 2;
+}
+
+#header-filler {
+  height: 150px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.horizontal-bar {
+  height: 5px;
+  background: linear-gradient(to right, blue, white);
+  border-radius: 5px;
+}
+
+.hr-brand {
+  border-top: 2px solid black;
+}
+
+#hr-search {
+  margin: 0;
+  border-color: black;
+  background-color: black;
+}
+
+#main-container {
+  margin: 0px 10px;
+}
+
+#navbar {
+  position: relative;
+  margin: 0 10px;
+}
+
+#nav-buttons {
+  text-align: center;
+  font-size: 20px;
+  padding: 0;
+}
+
+#nav-buttons button, #nav-menu button {
+  border-radius: 0;
+  padding: 0;
+  height: 50px;
+}
+
+#nav-buttons button {
+  width: 50%;
+}
+
+#nav-buttons span {
+  font-size: 12px;
+}
+
+#nav-menu {
+  display: none;
+  padding: 0;
+}
+
+#nav-menu button {
+  width: 100%;
+}
+
+.product-buttons {
+  clear: both;
+  margin-bottom: 10px;
+}
+
+.product-edit {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+.product-factory-reset-header, .product-faqs-header {
+  font-size: 1.1em;
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
+.product-specs-container p, .product-faqs-container p {
+  margin-left: 5px;
+  white-space: pre-wrap;
+}
+
+.product-img-container img {
+  max-width: 100%;
+}
+
+.product-specs-container, .product-factory-reset-container {
+  margin-bottom: 10px;
+}
+
+.product-img {
+  margin: 15px auto;
+  vertical-align: middle;
+}
+
+.product-img-container {
+  text-align: center;
+}
+
+.product-img-buttons-container {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.product-manual:hover {
+  text-decoration: none;
+}
+
+.product-title {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.product-subtitle {
+  font-weight: bold;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+.product-title-container {
+  display: inline-block;
+}
+
+.product-thumbnail-box {
+  display: inline-block;
+  white-space: nowrap;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border: solid gray 1px;
+  margin: 0 2px;
+}
+
+.product-thumbnail-box:hover {
+  border: solid black 1px;
+}
+
+.product-thumbnail-container {
+  float: right;
+}
+
+.product-thumbnail-container img {
+  cursor: pointer;
+}
+
+.product-thumbnail-vertical-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.product-warranty-container {
+  position: relative;
+}
+
+.red-asterisk {
+  color: red;
+}
+
+#search-container {
+  text-align: center;
+  padding: 0;
+}
+
+#search-container > input {
+  font-size: 1.5em;
+}
+
+#search-master {
+  color: black;
+  padding-left: 30px;
+  outline: 1px;
+  width: 100%;
+  height: 50px;
+}
+
+#search-master-icon {
+  position: absolute;
+  font-size: 1.5em;
+  top: 15px;
+  left: 5px;
+}
+
+#title {
+  font-size: 30px;
+  font-family: 'Amarante', impact;
+  padding: 10px;
+}
+
+#title-container {
+  text-align: center;
+}
+
+@media (min-width: 1400px) {
+  #main-container {
+    max-width: 1350px;
+    margin: auto;
+  }
+  #test {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 767px) {
+  
+  #header {
+    height: 170px;
+  }
+  
+  #header-filler {
+    height: 200px;
+  }
+  
+  #nav-buttons {
+    
+  }
+  
+  #nav-menu {
+    display: inline-block;
+  }
+  
+}
