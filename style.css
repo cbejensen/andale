@@ -426,8 +426,8 @@ h2 {
     height: 200px;
   }
   
-  #nav-buttons {
-    
+  #nav-buttons button {
+    height: 40px;
   }
   
   #nav-menu {
