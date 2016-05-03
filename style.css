@@ -394,4 +394,26 @@ h2 {
     display: table-cell;
   }
   
+<<<<<<< HEAD
 }
+||||||| merged common ancestors
+  #nav-buttons {
+
+  }
+
+  #nav-menu {
+    display: inline-block;
+  }
+
+}
+=======
+  #nav-buttons button {
+    height: 40px;
+  }
+
+  #nav-menu {
+    display: inline-block;
+  }
+
+}
+>>>>>>> origin/master
