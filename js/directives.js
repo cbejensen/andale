@@ -1,4 +1,4 @@
-var app = angular.module('proprietaryData');
+var app = angular.module('andale');
 
 app.directive('brandForm', function() {
   return {
@@ -133,6 +133,30 @@ app.directive('renderThumbnail', function() {
           element.css('width', '48px');
           var halfHeight = (((height / (width / 48)) / 2) * -1) + 24;
           element.css('margin-top', halfHeight);
+        }
+      });
+    }
+  };
+});
+
+
+app.directive('setClassWhenAtTop', function($window) {
+
+  var $win = angular.element($window);
+
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var topClass = attrs.setClassWhenAtTop, // get CSS class from directive's attribute value
+          offsetTop = element.offset().top; // get element's offset top relative to document
+
+      $win.on('scroll', function (e) {
+        if ($win.scrollTop() >= offsetTop) {
+          element.addClass(topClass);
+          $('#main-container').addClass('main-container-scrolling');
+        } else {
+          element.removeClass(topClass);
+          $('#main-container').removeClass('main-container-scrolling');
         }
       });
     }

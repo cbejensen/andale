@@ -1,2 +1,2 @@
 'use strict'
-var app = angular.module('proprietaryData', ['firebase']);
+var app = angular.module('andale', ['firebase']);

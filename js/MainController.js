@@ -1,4 +1,4 @@
-var app = angular.module('proprietaryData')
+var app = angular.module('andale')
 .controller('MainController', ['$scope', 'dataService', '$firebaseArray', '$firebaseObject',
   function ($scope, dataService, $firebaseArray, $firebaseObject) {
     
@@ -59,7 +59,7 @@ var app = angular.module('proprietaryData')
     $scope.saveProduct = function(product, oldProduct) {
       if(dataService.saveProduct(product, oldProduct)) {
         console.log($scope.products);
-        var ref = new Firebase("https://proprietary-database.firebaseio.com/");
+        var ref = new Firebase("https://andale.firebaseio.com/");
         ref.on("value", function(snapshot) {
           $scope.products = $firebaseArray(ref.child('products/'))
         }, function (errorObject) {
@@ -124,5 +124,4 @@ var app = angular.module('proprietaryData')
         product.showSpecs = false;
       });
     };
-  
 }]);

@@ -1,4 +1,4 @@
-var app = angular.module('proprietaryData')
+var app = angular.module('andale')
   .service('dataService', ['$http', '$firebaseArray', function($http, $firebaseArray) {
 
     var ref = new Firebase("https://andale.firebaseio.com/");
@@ -132,7 +132,7 @@ var app = angular.module('proprietaryData')
         name: product.name,
         subtitle: product.subtitle,
         url: product.url,
-        manualUrl: product.manualUr,
+        manualUrl: product.manualUrl,
         images: product.images,
         specs: product.specs,
         faqs: product.faqs,

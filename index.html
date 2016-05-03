@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="proprietaryData">
+<html ng-app="andale">
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -25,30 +25,27 @@
       </div>
     </div>
     
-    <div id="header">
-      <div id="title-container">
-        <div id="title"><strong>Andale</strong></div>
-      </div>
+    <div id="title"><strong>Andale</strong></div>
 
-      <div id="navbar" class="row">
-        <div id="search-container" class="col-xs-12 col-sm-8">
-         <span id="search-master-icon" class="glyphicon glyphicon-search"></span>
-          <input id="search-master" ng-model="search"
-            placeholder="Search brand or product"/>
+    <div id="command-bar" class="container-fluid" set-class-when-at-top="sticky">
+      <div class="col-xs-12">
+        <div class="input-group">
+          <span id="search-master-icon" class="glyphicon glyphicon-search"></span>
+          <input class="form-control" ng-model="search" placeholder="Search brand or product"/>
+          <span id="command-menu" class="input-group-btn">
+            <button class="btn btn-primary">
+              <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </button>
+          </span>
+          <span id="command-buttons" class="input-group-btn">
+            <button class="btn btn-primary" ng-click="newBrandForm = true">Add Brand</button>
+            <button class="btn btn-primary" ng-click="newProductForm = true">Add Product</button>
+          </span>
         </div>
-
-        <div id="nav-buttons" class="col-xs-12 col-sm-4">
-          <button class="btn btn-primary" ng-click="newBrandForm = true">Add Brand</button><!--
-          --><button class="btn btn-primary" ng-click="newProductForm = true">Add Product</button>
-        </div>
-        
       </div>
     </div>
     
-    <div id="header-filler"></div>
-    
-    <div id="main-container" class="container-fluid">
-      
+    <div id="main-container" class="container">
       <!-- DATA -->
       <div ng-repeat="brand in brands | filter:search"
       ng-init="editShow=false">
@@ -99,8 +96,6 @@
                   <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
                 </button><!--
               --></a><!--
-                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-              </button><!--
               --><button type="button" class="btn btn-default faq-button" ng-if="product.faqs" ng-click="product.showFaqs = !product.showFaqs" title="Show FAQ's" aria-label="Show F.A.Q.'s">
                 <span aria-hidden="true"><strong>?</strong></span>
               </button>
@@ -138,8 +133,8 @@
             
           </div>
       </div>
-      
     </div>
+
     <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-sanitize.js"></script>
