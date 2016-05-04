@@ -42,30 +42,47 @@ a {
   margin: auto;
 }
 
-#command-bar {
+.command-container {
+  z-index: 200;
+  position: relative;
+}
+
+.command-bar {
   background-color: #E32F21;
-  z-index: 100;
-  height: 50px;
-  margin-bottom: 30px;
+  position: relative;
+  z-index: 300;
 }
 
-#command-bar > div {
-  top: 50%;
-  transform: translateY(-50%);
+.command-bar div {
+  margin: 5px 0;
 }
 
-#command-bar input {
+.command-bar input {
   position: relative;
   padding-left: 30px;
   font-size: 20px;
+  color: black;
 }
 
-#command-buttons {
+.command-menu button, .command-buttons button {
+  border-radius: 0;
+}
+
+.command-buttons {
   display: none;
 }
 
-#command-menu button, #command-buttons button {
-  border-radius: 0;
+.command-tray {
+  padding: 10px;
+  background-color: rgba(66, 61, 61, 0.95);
+  position: absolute;
+  width: 100%;
+  bottom: -50px;
+  transition: 0.5s;
+}
+
+.command-tray.ng-hide {
+  bottom: 0;
 }
 
 .data-form {
@@ -237,10 +254,14 @@ h2 {
   border-top: 2px solid black;
 }
 
-#hr-search {
+.hr-search {
   margin: 0;
   border-color: black;
   background-color: black;
+}
+
+.main-container {
+  margin-top: 20px;
 }
 
 .main-container-scrolling {
@@ -347,7 +368,7 @@ h2 {
   color: red;
 }
 
-#search-master-icon {
+.search-master-icon {
   position: absolute;
   left: 5px;
   top: 7px;
@@ -364,7 +385,7 @@ h2 {
   height: 300px;
 }
 
-#title {
+.title {
   font-size: 30px;
   font-family: 'Amarante', impact;
   padding: 10px;
@@ -373,7 +394,7 @@ h2 {
   width: 100%;
 }
 
-#title-container {
+.title-container {
   text-align: center;
 }
 
@@ -386,10 +407,15 @@ h2 {
 
 @media (min-width: 767px) {
   
-  #command-menu {
+  .command-menu {
     display: none;
   }
   
-  #command-buttons {
+  .command-buttons {
     display: table-cell;
   }
+
+  .command-tray {
+    display: none;
+  }
+}

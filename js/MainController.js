@@ -1,6 +1,6 @@
 var app = angular.module('andale')
-.controller('MainController', ['$scope', 'dataService', '$firebaseArray', '$firebaseObject',
-  function ($scope, dataService, $firebaseArray, $firebaseObject) {
+.controller('MainController', ['$scope', '$sce', 'dataService', '$firebaseArray', '$firebaseObject',
+  function ($scope, $sce, dataService, $firebaseArray, $firebaseObject) {
     
     $scope.brands = dataService.brands;
     $scope.products = dataService.products;
@@ -17,9 +17,8 @@ var app = angular.module('andale')
       $scope.search = str;
     }
     
-    $scope.showMenu = function() {
-      $scope.menu = !$scope.menu;
-      
+    $scope.showCommandTray = function() {
+      $scope.commandTray = !$scope.commandTray;
     }
     
     // BRAND
@@ -107,7 +106,7 @@ var app = angular.module('andale')
       }
     }
     
-    /*Show all pics and specs*/
+    // Show all pics and specs
     $scope.showAll = function() {
       $scope.allShown = !$scope.allShown;
       $scope.products.forEach(function(product) {
@@ -116,7 +115,7 @@ var app = angular.module('andale')
       });
     };
     
-    /*Hide all pics and specs*/
+    // Hide all pics and specs
     $scope.hideAll = function() {
       $scope.allShown = !$scope.allShown;
       $scope.products.forEach(function(product) {
@@ -124,4 +123,5 @@ var app = angular.module('andale')
         product.showSpecs = false;
       });
     };
+
 }]);
