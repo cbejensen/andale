@@ -10,6 +10,7 @@ var app = angular.module('andale')
     function clear(form) {
       $scope[form] = false;
       $scope.search = '';
+      $scope.commandTray = false;
     }
     
     $scope.changeSearch = function(str) {
