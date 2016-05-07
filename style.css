@@ -42,88 +42,11 @@ a {
   margin: auto;
 }
 
-/*
-.command-container {
-  position: relative;
-  z-index: 300;
-}
-
-.command-bar {
-  position: relative;
-  height: 40px;
-}
-
-.command-bar > div {
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
-.command-icon {
-  position: absolute;
-  left: 0;
-  right: 0;
-  font-size: 1.5em;
-  line-height: 35px;
-  text-decoration: none;
-  color: white
-  transition: top 0.5s, color 1s;
-}
-
-.command-icon-container {
-  position: relative;
-  top: 0px;
-}
-
-.arrow-hide {
-  top: 40px;
-}
-
-.arrow-slide {
-  top: 0;
-}
-
-.icon-hide {
-  display: table-cell;
-}
-
-.command-bar-logo div a {
-  font-size: 2em;
-  line-height: 35px;
-  text-decoration: none;
-  color: white;
-}
-
-.command-bar-logo div a:hover {
-  color: #337AB7;
-}
-
-.command-bar input {
-  position: relative;
-  padding-left: 30px;
-  font-size: 20px;
-  color: black;
-}
-
-.command-tray {
-  padding: 10px;
-  background-color: rgba(66, 61, 61, 0.95);
-  position: absolute;
-  width: 100%;
-  bottom: -53px;
-  transition: 0.5s;
-}
-
-.command-tray.ng-hide {
-  bottom: 0;
-}
-*/
-
 .command-bar {
   position: relative;
   height: 45px;
   margin: 0;
-/*  z-index: 900;*/
+	z-index: 100;
 }
 
 .command-buttons {
@@ -134,10 +57,9 @@ a {
   top: 50%;
   transform: translateY(-50%);
   color: white;
-  font-size: 2em;
+  font-size: 1.5em;
   visibility: hidden;
   opacity: 0;
-  transition: 1s;
 }
 
 .command-icon-container {
@@ -155,7 +77,7 @@ a {
 }
 
 .command-search-container input {
-  font-size: 1.7em;
+  font-size: 1.5em;
   color: black;
   padding-left: 30px;
 }
@@ -164,9 +86,9 @@ a {
   position: absolute;
   top: 45px;
   width: 100%;
-  background-color: rgba(66, 61, 61, 0.95);
   padding: 5px;
-  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: rgba(61, 61, 61, 0.9);
 }
 
 .command-tray-cover {
@@ -180,7 +102,7 @@ a {
 }
 
 .data-form {
-  margin: auto;
+  margin: 0 15px;
 }
 
 .data-form input:not([type=checkbox]), .data-form select {
@@ -251,7 +173,6 @@ form {
 
 .form-box {
   opacity: 1;
-  z-index: 400;
   width: 80%;
   max-width: 1000px;
   max-height: 90vh;
@@ -263,6 +184,7 @@ form {
   padding: 10px;
   border: 2px solid black;
   overflow: scroll;
+	z-index: 300;
 }
 
 .form-buttons {
@@ -311,7 +233,7 @@ h2 {
 .hazy-background {
   background-color: #FBFBFB;
   opacity: .9;
-  z-index: 400;
+  z-index: 200;
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -335,9 +257,59 @@ h2 {
   background-color: black;
 }
 
+.info-box {
+	position: relative;
+	max-width: 500px;
+}
+
+.info-box-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+.info-box-close:hover {
+	color: red;
+}
+
+.info-box-email span {
+	font-size: 1.5em;
+}
+
+.info-box-icons div {
+	margin-bottom: 15px;
+}
+
+.info-box-icons img {
+	max-height: 50px;
+}
+
+.info-box p {
+	text-indent: 2em;
+}
+
+.info-icon-container {
+	position: relative;
+	height: 30px;
+	background-color: rgb(66, 61, 61);
+	font-size: 1.3em;
+}
+
+.info-icon-container span {
+	line-height: 30px;
+	top: 0;
+}
+
+.info-icon-container span:hover {
+	color: #E7E009;
+	transition: .5s;
+	cursor: pointer;
+}
+
 .main-container {
   position: absolute;
-  top: 200px;
+  top: 150px;
   left: 0;
   right: 0;
 }
@@ -450,7 +422,7 @@ h2 {
   position: absolute;
   left: 5px;
   top: 7px;
-  z-index: 300;
+  z-index: 100;
   font-size: 20px
 }
 
@@ -459,41 +431,28 @@ h2 {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 500;
 }
 
 .sticky .command-icon-container {
   width: 8.33333%;
+	left: 7.5px;
 }
 
 .sticky .command-icon-container span {
   visibility: visible;
   opacity: 1;
+  transition: 1s;
 }
 
 .sticky .command-search-container {
   width: 91.66666667%;
-  transition: width 0.3s;
-  padding-left: 0;
+  transition: width 0.4s;
 }
 
 .subtitle {
   position: absolute;
-  z-index: 350;
   width: 100%;
   top: 60px;
-}
-
-.subtitle-container {
-  position: relative;
-  height: 30px;
-  background-color: rgb(66, 61, 61);
-}
-
-.subtitle-container div {
-  font-style: italic;
-  line-height: 30px;
-  font-size: 1.1em;
 }
 
 .test {
@@ -513,15 +472,7 @@ h2 {
   text-align: center;
 }
 
-@media (min-width: 1400px) {
-  #main-container {
-    max-width: 1350px;
-    margin: auto;
-  }
-}
-
-@media (min-width: 767px) {
-  
+@media (min-width: 768px) {
   .command-menu {
     display: none;
   }
@@ -533,4 +484,8 @@ h2 {
   .command-tray {
     display: none;
   }
+
+	.info-box-icons div {
+		margin-bottom: 0;
+	}
 }

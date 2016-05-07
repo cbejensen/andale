@@ -8,36 +8,83 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body ng-controller="MainController">
-    
-    <div ng-show="newBrandForm || newProductForm || editBrandForm || editProductForm">
-      <div class="hazy-background"></div>
-      <div class="form-box">
-        <!-- new -->
-        <brand-form ng-show="newBrandForm" is-new="true"
-                    cancel="newBrandForm = false" submit="addBrand"></brand-form>
-        <product-form ng-show="newProductForm" is-new="true"
-                      cancel="newProductForm = false" submit="addProduct"></product-form>
+    <div ng-show="newBrandForm || newProductForm || editBrandForm || editProductForm || showInfoBox">
+			<div class="hazy-background"></div>
+			<div class="form-box">
 
-        <!-- edit -->
-        <brand-form ng-show="editBrandForm" old-brand="oldItem"
-                    cancel="editBrandForm = false" submit="saveBrand" remove="removeBrand"></brand-form>
-        <product-form ng-show="editProductForm" old-product="oldItem"
-                      cancel="editProductForm = false" submit="saveProduct" remove="removeProduct"></product-form>
-      </div>
+				<div class="info-box container" ng-show="showInfoBox">
+					<span class="info-box-close glyphicon glyphicon-remove" ng-click="showInfoBox = false"></span>
+					<div class="page-header">
+						<h1>Andale</h1>
+						<h5>by <strong>Christian Jensen</strong></h5>
+					</div>
+					<p>This app started as a resource to help my tech support team find pictures and information about products quickly and easily. I now use it to showcase my coding abilities. Please make sure to:
+						<ul>
+							<li>Resize the window to see the responsive design</li>
+							<li>Scroll down the page and play with one of the products</li>
+							<li>Search for, add and edit brands and products</li>
+						</ul>
+					</p>
+					<hr>
+					<h4>Made possible by...</h4><br />
+					<div class="info-box-icons row text-center">
+						<div class="col-sm-4">
+							<a href="https://angularjs.org/">
+								<img class="img-thumbnail" src="images/angular-icon.png"><br />
+								Angular
+							</a>
+						</div>
+						<div class="col-sm-4">
+							<a href="http://getbootstrap.com/">
+								<img class="img-thumbnail" src="images/bootstrap-icon.png"><br />
+								Bootstrap
+							</a>
+						</div>
+						<div class="col-sm-4">
+							<a href="https://fortawesome.github.io/Font-Awesome/">
+								<img class="img-thumbnail" src="images/font-awesome-icon.jpg"><br />
+								Font Awesome
+							</a>
+						</div>
+					</div>
+					<hr>
+					<div class="info-box-email row text-center">
+						<a href="mailto:cbejensen@gmail.com?Subject=Andale%20Feedback" target="_blank">
+						<div class="col-xs-12">
+							<span class="glyphicon glyphicon-envelope"></span><br />
+							cbejensen@gmail.com
+						</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- new -->
+				<brand-form ng-show="newBrandForm" is-new="true"
+										cancel="newBrandForm = false" submit="addBrand"></brand-form>
+				<product-form ng-show="newProductForm" is-new="true"
+											cancel="newProductForm = false" submit="addProduct"></product-form>
+
+				<!-- edit -->
+				<brand-form ng-show="editBrandForm" old-brand="oldItem"
+										cancel="editBrandForm = false" submit="saveBrand" remove="removeBrand"></brand-form>
+				<product-form ng-show="editProductForm" old-product="oldItem"
+										cancel="editProductForm = false" submit="saveProduct" remove="removeProduct"></product-form>
+
+			</div>
     </div>
 
     <div class="header-container container-fluid">
 
       <div class="title red-bg text-center"><strong>Andale</strong></div>
 
-      <div class="subtitle-container text-muted">
-        <div class="text-center">One Place, Endless Results</div>
+      <div class="info-icon-container text-center text-muted">
+        <span ng-click="showInfoBox = true" class="glyphicon glyphicon-info-sign"></span>
       </div>
     
       <div class="command-bar red-bg row" set-class-when-at-top="sticky">
         <div class="command-tray" ng-show="commandTray">
-          <button class="col-xs-3 col-xs-offset-2 btn btn-primary" ng-click="newBrandForm = true">Add Brand</button>
-          <button class="col-xs-3 col-xs-offset-2 btn btn-primary" ng-click="newProductForm = true">Add Product</button>
+          <button class="col-xs-3 col-xs-offset-2 btn btn-default" ng-click="newBrandForm = true">+ Brand</button>
+          <button class="col-xs-3 col-xs-offset-2 btn btn-default" ng-click="newProductForm = true">+ Product</button>
         </div>
         <div class="command-tray-cover red-bg"></div>
         <a href="#">
@@ -62,41 +109,6 @@
         </div>
       </div>
     </div>
-
-
-
-<!--
-    <div class="command-container container-fluid" set-class-when-at-top="sticky">
-      <div class="command-tray row" ng-show="commandTray">
-        <button class="col-xs-3 col-xs-offset-2 btn btn-primary" ng-click="newBrandForm = true">Add Brand</button>
-        <button class="col-xs-3 col-xs-offset-2 btn btn-primary" ng-click="newProductForm = true">Add Product</button>
-      </div>
-      <div class="command-bar red-bg row">
-        <div class="command-icon-container col-xs-1 text-center"
-             set-class-when-at-top="icon-hide">
-          <a href="#">
-            <span class="command-icon arrow-hide glyphicon glyphicon-menu-up"
-                  set-class-when-at-top="arrow-slide"></span>
-          </a>
-        </div>
-        <div class="command-search-container col-xs-12 pull-right" set-class-when-at-top="col-xs-11 pull-right">
-          <div class="input-group">
-            <span class="search-master-icon glyphicon glyphicon-search"></span>
-            <input class="form-control" ng-model="search" placeholder="Search brand or product"/>
-            <span class="command-menu input-group-btn">
-              <button class="btn btn-primary" ng-click="showCommandTray()">
-                <span class="glyphicon glyphicon-menu-hamburger"></span>
-              </button>
-            </span>
-            <span class="command-buttons input-group-btn">
-              <button class="btn btn-primary" ng-click="newBrandForm = true">Add Brand</button>
-              <button class="btn btn-primary" ng-click="newProductForm = true">Add Product</button>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
--->
     
     <div class="main-container container">
       <!-- DATA -->
@@ -143,28 +155,25 @@
                 ng-click="product.showImg = !product.showImg; product.imgToShow = 0"
                 title="Show Images" aria-label="Show Images">
                 <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-              </button><!--
-              --><button type="button" class="btn btn-default" ng-if="product.specs"
+              </button>
+           <button type="button" class="btn btn-default" ng-if="product.specs"
                  ng-click="product.showSpecs = !product.showSpecs" title="Show Specs"
                  aria-label="Show Specs">
                 <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-              </button><!--
-              --><a class="product-manual" ng-if="product.manualUrl" href={{product.manualUrl}}
-                 target='_blank'><!--
-                --><button type="button" class="btn btn-default" title="Open Manual"
+              </button>
+           <a class="product-manual" ng-if="product.manualUrl" href={{product.manualUrl}}
+                 target='_blank'>
+             <button type="button" class="btn btn-default" title="Open Manual"
                      aria-label="Open Manual">
                   <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                </button><!--
-              --></a><!--
-              --><button type="button" class="btn btn-default faq-button" ng-if="product.faqs" ng-click="product.showFaqs = !product.showFaqs" title="Show FAQ's" aria-label="Show F.A.Q.'s">
-                <span aria-hidden="true"><strong>?</strong></span>
-              </button>
+                </button>
+           </a>
             </div>
             
             <div ng-if="product.showImg">
               <div class="product-img-buttons-container">
-                <i  class="fa fa-arrow-left" ng-click="productImgScroll(false, product, product.images.length)"></i><!--
-             --><i class="fa fa-arrow-right" ng-click="productImgScroll(true, product, product.images.length)"></i>
+                <i  class="fa fa-arrow-left" ng-click="productImgScroll(false, product, product.images.length)"></i>
+             <i class="fa fa-arrow-right" ng-click="productImgScroll(true, product, product.images.length)"></i>
               </div>
               <div class="product-img-container">
                 <img ng-src={{product.images[product.imgToShow]}}>

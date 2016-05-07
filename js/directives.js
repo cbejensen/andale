@@ -139,8 +139,9 @@ app.directive('setClassWhenAtTop', function($window) {
   return {
     restrict: 'A',
     link: function (scope, element, attrs) {
-      var topClass = attrs.setClassWhenAtTop, // get CSS class from directive's attribute value
-          offsetTop = element.offset().top; // get element's offset top relative to document
+
+      var topClass = attrs.setClassWhenAtTop;
+      var offsetTop = element.prop('offsetTop');
 
       $win.on('scroll', function (e) {
         if ($win.scrollTop() >= offsetTop) {
