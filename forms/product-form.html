@@ -49,20 +49,7 @@
       ng-mousedown="addBullets()">+ Add Bullets</button><br /> -->
     <textarea type="text" class="product-specs" ng-model="product.specs"></textarea>
   </div>
-  
-  <div class="form-row row">
-    <div class="faq-container col-xs-12">
-      FAQ's<button class="add-faq-button btn btn-success" type="button"
-        ng-click="addProductFaq(product)">+ Add FAQ</button><br />
-      <div class="faq-set" ng-repeat="faq in product.faqs track by $index">
-        <input class="faq-question-input" type="text" placeholder="Question"
-          ng-model="product.faqs[$index].question">
-        <input class="faq-answer-input" type="text" placeholder="Answer"
-          ng-model="product.faqs[$index].answer">
-      </div>
-    </div>
-  </div>
-  
+
   <div class="form-row">
     Warranty<span class="red-asterisk"> *</span><br/>
     <input ng-model="product.warranty" required><br />

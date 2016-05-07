@@ -74,15 +74,7 @@ app.directive('productForm', function() {
         $scope.product.images = ['']
       }
     }
-    
-    $scope.addProductFaq = function() {
-      if($scope.product.faqs) {
-        $scope.product.faqs.push({question: '', answer: ''})
-      } else {
-        $scope.product.faqs = [{question: '', answer: ''}]
-      }
-    }
-    
+
     $scope.addBullets = function() {
       $scope.product.specs = '\u2022 ' + $scope.product.specs.replace(/[\r\n]/g, "\n\u2022 ");
     }
@@ -153,10 +145,8 @@ app.directive('setClassWhenAtTop', function($window) {
       $win.on('scroll', function (e) {
         if ($win.scrollTop() >= offsetTop) {
           element.addClass(topClass);
-          $('#main-container').addClass('main-container-scrolling');
         } else {
           element.removeClass(topClass);
-          $('#main-container').removeClass('main-container-scrolling');
         }
       });
     }

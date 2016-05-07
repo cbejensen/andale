@@ -42,6 +42,7 @@ a {
   margin: auto;
 }
 
+/*
 .command-container {
   position: relative;
   z-index: 300;
@@ -49,10 +50,52 @@ a {
 
 .command-bar {
   position: relative;
+  height: 40px;
 }
 
-.command-bar div {
-  margin: 5px 0;
+.command-bar > div {
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.command-icon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 1.5em;
+  line-height: 35px;
+  text-decoration: none;
+  color: white
+  transition: top 0.5s, color 1s;
+}
+
+.command-icon-container {
+  position: relative;
+  top: 0px;
+}
+
+.arrow-hide {
+  top: 40px;
+}
+
+.arrow-slide {
+  top: 0;
+}
+
+.icon-hide {
+  display: table-cell;
+}
+
+.command-bar-logo div a {
+  font-size: 2em;
+  line-height: 35px;
+  text-decoration: none;
+  color: white;
+}
+
+.command-bar-logo div a:hover {
+  color: #337AB7;
 }
 
 .command-bar input {
@@ -60,14 +103,6 @@ a {
   padding-left: 30px;
   font-size: 20px;
   color: black;
-}
-
-.command-menu button, .command-buttons button {
-  border-radius: 0;
-}
-
-.command-buttons {
-  display: none;
 }
 
 .command-tray {
@@ -81,6 +116,67 @@ a {
 
 .command-tray.ng-hide {
   bottom: 0;
+}
+*/
+
+.command-bar {
+  position: relative;
+  height: 45px;
+  margin: 0;
+/*  z-index: 900;*/
+}
+
+.command-buttons {
+  display: none;
+}
+
+.command-icon {
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 2em;
+  visibility: hidden;
+  opacity: 0;
+  transition: 1s;
+}
+
+.command-icon-container {
+  position: absolute;
+  height: 45px;
+  padding: 0;
+}
+
+.command-menu button, .command-buttons button {
+  border-radius: 0;
+}
+
+.command-search-container {
+  top: 5px;
+}
+
+.command-search-container input {
+  font-size: 1.7em;
+  color: black;
+  padding-left: 30px;
+}
+
+.command-tray {
+  position: absolute;
+  top: 45px;
+  width: 100%;
+  background-color: rgba(66, 61, 61, 0.95);
+  padding: 5px;
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.command-tray-cover {
+  position: absolute;
+  width: 100%;
+  height: 45px;
+}
+
+.command-tray.ng-hide {
+  top: 0;
 }
 
 .data-form {
@@ -221,14 +317,12 @@ h2 {
   position: fixed;
 }
 
-.hidden {
-  visibility: hidden;
+.header-container {
+  padding: 0;
 }
 
-.horizontal-bar {
-  height: 5px;
-  background: linear-gradient(to right, blue, white);
-  border-radius: 5px;
+.hidden {
+  visibility: hidden;
 }
 
 .hr-brand {
@@ -242,11 +336,10 @@ h2 {
 }
 
 .main-container {
-  margin-top: 20px;
-}
-
-.main-container-scrolling {
-  margin-top: 80px;
+  position: absolute;
+  top: 200px;
+  left: 0;
+  right: 0;
 }
 
 .product-buttons {
@@ -364,20 +457,43 @@ h2 {
 .sticky {
   position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
+  z-index: 500;
+}
+
+.sticky .command-icon-container {
+  width: 8.33333%;
+}
+
+.sticky .command-icon-container span {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sticky .command-search-container {
+  width: 91.66666667%;
+  transition: width 0.3s;
+  padding-left: 0;
+}
+
+.subtitle {
+  position: absolute;
+  z-index: 350;
+  width: 100%;
+  top: 60px;
 }
 
 .subtitle-container {
   position: relative;
+  height: 30px;
+  background-color: rgb(66, 61, 61);
 }
 
 .subtitle-container div {
-  position: absolute;
-  z-index: 300;
-  left: 0;
-  right: 0;
-  top: -20px;
-  margin: auto;
   font-style: italic;
+  line-height: 30px;
+  font-size: 1.1em;
 }
 
 .test {
@@ -386,7 +502,8 @@ h2 {
 
 .title {
   font-size: 3em;
-  font-family: 'Amarante', impact;
+  line-height: 80%;
+  font-family: 'Amarante', sans-serif;
   padding: 10px;
   width: 100%;
   color: white;
