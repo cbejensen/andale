@@ -140,14 +140,14 @@ app.directive('setClassWhenAtTop', function($window) {
     restrict: 'A',
     link: function (scope, element, attrs) {
 
-      var topClass = attrs.setClassWhenAtTop;
+      var classToAdd = attrs.setClassWhenAtTop;
       var offsetTop = element.prop('offsetTop');
 
       $win.on('scroll', function (e) {
-        if ($win.scrollTop() >= offsetTop) {
-          element.addClass(topClass);
+				if ($win[0].scrollY >= offsetTop) {
+					element.addClass(classToAdd);
         } else {
-          element.removeClass(topClass);
+					element.removeClass(classToAdd);
         }
       });
     }

@@ -119,7 +119,8 @@ var app = angular.module('andale')
         removeImgBlanks(product.images);
         removeFaqBlanks(product.faqs);
         ref.child('products').child(product.name.toLowerCase()).set(product, confirmation);
-        ref.child('brands/' + product.brand + '/products/' + product.name.toLowerCase()).set(product.name.toLowerCase())
+        ref.child('brands/' + product.brand + '/products/' +
+									product.name.toLowerCase()).set(product.name.toLowerCase())
         return true;
       } else {
         return false;
@@ -164,9 +165,5 @@ var app = angular.module('andale')
       }
       return false;
     }
-
-    this.filterProducts = function(value, brand) {
-
-    };
 
   }]);
