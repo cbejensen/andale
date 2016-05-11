@@ -1,2 +1,2 @@
 'use strict'
-var app = angular.module('andale', ['firebase', 'ngSanitize', 'ngAnimate']);
+var app = angular.module('andale', ['ngSanitize']);

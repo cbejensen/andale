@@ -1,9 +1,8 @@
 var app = angular.module('andale')
-.controller('MainController', ['$scope', '$sce', 'dataService', '$firebaseArray', '$firebaseObject',
-  function ($scope, $sce, dataService, $firebaseArray, $firebaseObject) {
+.controller('MainController', ['$scope', '$sce', 'dataService',
+  function ($scope, $sce, dataService) {
     
-    $scope.brands = dataService.brands;
-    $scope.products = dataService.products;
+    $scope.data = dataService.data;
     
     $scope.allShown = false;
     
@@ -12,12 +11,7 @@ var app = angular.module('andale')
       $scope.search = '';
       $scope.commandTray = false;
     }
-    
-    $scope.changeSearch = function(str) {
-      console.log(str)
-      $scope.search = str;
-    }
-    
+
     $scope.showCommandTray = function() {
       $scope.commandTray = !$scope.commandTray;
     }
@@ -26,6 +20,7 @@ var app = angular.module('andale')
     $scope.editBrand = function(brand) {
       $scope.oldItem = brand;
       $scope.editBrandForm = true;
+			$scope.search = brand.name;
     }
     
     $scope.addBrand = function(brand) {
@@ -59,12 +54,6 @@ var app = angular.module('andale')
     $scope.saveProduct = function(product, oldProduct) {
       if(dataService.saveProduct(product, oldProduct)) {
         console.log($scope.products);
-        var ref = new Firebase("https://andale.firebaseio.com/");
-        ref.on("value", function(snapshot) {
-          $scope.products = $firebaseArray(ref.child('products/'))
-        }, function (errorObject) {
-          console.log("The read failed: " + errorObject.code);
-        });
         clear('editProductForm');
       }
     }

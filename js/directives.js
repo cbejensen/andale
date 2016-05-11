@@ -47,7 +47,7 @@ app.directive('brandForm', function() {
 
 app.directive('productForm', function() {
   
-  var productController = ['$scope', '$firebaseArray', 'dataService', function($scope, $firebaseArray, dataService) {
+  var productController = ['$scope', 'dataService', function($scope, dataService) {
   
     $scope.brands = dataService.brands;
     
@@ -134,22 +134,22 @@ app.directive('renderThumbnail', function() {
 
 app.directive('setClassWhenAtTop', function($window) {
 
-  var $win = angular.element($window);
+	var $win = angular.element($window);
 
-  return {
-    restrict: 'A',
-    link: function (scope, element, attrs) {
+	return {
+		restrict: 'A',
+		link: function (scope, element, attrs) {
 
-      var topClass = attrs.setClassWhenAtTop;
-      var offsetTop = element.prop('offsetTop');
+			var classToAdd = attrs.setClassWhenAtTop;
+			var offsetTop = element.prop('offsetTop');
 
-      $win.on('scroll', function (e) {
-        if ($win.scrollTop() >= offsetTop) {
-          element.addClass(topClass);
-        } else {
-          element.removeClass(topClass);
-        }
-      });
-    }
-  };
+			$win.on('scroll', function (e) {
+				if ($win[0].scrollY >= offsetTop) {
+					element.addClass(classToAdd);
+				} else {
+					element.removeClass(classToAdd);
+				}
+			});
+		}
+	};
 });
