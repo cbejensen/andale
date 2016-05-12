@@ -112,8 +112,8 @@
     
 		<!-- DATA -->
     <div class="main-container container">
-      <div ng-repeat="brand in brands | orderBy:'name'"
-      ng-init="editShow=false">
+      <div ng-repeat="brand in brands | orderBy:'name' | filter:search"
+      ng-init="editShow = false">
         <div ng-mouseover="brandMouseOver= true" ng-mouseleave="brandMouseOver = false"
           class="brand-header-container">
           <a href={{brand.url}} target='_blank'>

@@ -34,7 +34,10 @@ var app = angular.module('andale')
     };
     
     $scope.removeBrand = function(brand) {
-      if(dataService.removeBrand(brand)) {
+			var confirmation = confirm('Are you sure you want to delete \'' + brand.name + '\'?\n' +
+				'This will also delete all of this brand\'s products.')
+			if (confirmation) {
+				dataService.removeBrand(brand);
         clear('editBrandForm');
       }
     }

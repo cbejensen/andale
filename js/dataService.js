@@ -41,7 +41,6 @@ var app = angular.module('andale')
 
 	this.saveBrand = function(newBrand, oldBrand) {
 		for (var i = 0; i < brands.length; i++) {
-			console.log(brands[i]);
 			if(brands[i].name === oldBrand.name) {
 				brands[i] = newBrand;
 				break;
@@ -49,20 +48,15 @@ var app = angular.module('andale')
 		}
 	}
 
-//	this.removeBrand = function(brand) {
-//		var confirmation = confirm('Are you sure you want to delete \'' + brand.name + '\'?\n' +
-//			'This will also delete all of this brand\'s products.')
-//		if (confirmation) {
-//			for (var product in brand.products) {
-//				var prod = firebaseProducts.$getRecord(product);
-//				removeItem(prod, firebaseProducts)
-//			}
-//			removeItem(brand, firebaseBrands)
-//			return true;
-//		}
-//		return false;
-//	}
-//
+	this.removeBrand = function(brand) {
+		for (var i = 0; i < brands.length; i++) {
+			if (brands[i].name === brand.name) {
+				brands.splice(i, 1);
+				break;
+			}
+		}
+	}
+
 //	// PRODUCT
 //	this.addProduct = function(product) {
 //		var write = true;
