@@ -2,7 +2,7 @@ var app = angular.module('andale')
 .controller('MainController', ['$scope', '$sce', 'dataService',
   function ($scope, $sce, dataService) {
     
-    $scope.data = dataService.data;
+    $scope.brands = dataService.brands;
     
     $scope.allShown = false;
     

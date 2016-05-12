@@ -25,119 +25,107 @@ var app = angular.module('andale')
 
 	// BRAND
 	this.addBrand = function(brand) {
-
 		var write = true;
-
-		brands.forEach(function(e, i, a) {
-			if (brand.name.toLowerCase() === e.name.toLowerCase()) {
+		brands.forEach(function(existingBrand) {
+			if (brand.name.toLowerCase() === existingBrand.name.toLowerCase()) {
 				var save = confirm('A brand with this name already exists. Do you want to overwrite it?')
 				if (!save) {
 					write = false;
 				}
 			}
 		});
-
 		if (write) {
-			for (var key in brand) {
-				if (!brand[key]) delete brand[key];
-			}
 			brands.push(brand);
 		}
-
 	}
 
 	this.saveBrand = function(newBrand, oldBrand) {
-
-		console.log(newBrand);
-		if (oldBrand.name !== newBrand.name) {
-			newBrand.products.forEach(function (product) {
-				products.forEach(function (productToUpdate) {
-					if (product === productToUpdate.name.toLowerCase()) {
-						productToUpdate.brand = newBrand.name.toLowerCase();
-					}
-				})
-			})
-		}
-
-	}
-
-	this.removeBrand = function(brand) {
-		var confirmation = confirm('Are you sure you want to delete \'' + brand.name + '\'?\n' +
-			'This will also delete all of this brand\'s products.')
-		if (confirmation) {
-			for (var product in brand.products) {
-				var prod = firebaseProducts.$getRecord(product);
-				removeItem(prod, firebaseProducts)
+		for (var i = 0; i < brands.length; i++) {
+			console.log(brands[i]);
+			if(brands[i].name === oldBrand.name) {
+				brands[i] = newBrand;
+				break;
 			}
-			removeItem(brand, firebaseBrands)
-			return true;
-		}
-		return false;
-	}
-
-	// PRODUCT
-	this.addProduct = function(product) {
-		var write = true;
-		// check if product exists
-		ref.child('products').once("value", function(snapshot) {
-			var productExists = snapshot.child(product.name.toLowerCase()).exists();
-			if (productExists) {
-				var save = confirm('A product with this name already exists. Do you want to overwrite it?')
-				if (!save) {
-					write = false;
-				}
-			}
-		})
-		if (write) {
-			product.brand = product.brand.toLowerCase();
-			removeImgBlanks(product.images);
-			ref.child('products').child(product.name.toLowerCase()).set(product, confirmation);
-			ref.child('brands/' + product.brand + '/products/' +
-				product.name.toLowerCase()).set(product.name.toLowerCase())
-			return true;
-		} else {
-			return false;
 		}
 	}
 
-	this.saveProduct = function(product, oldProduct) {
-		product = {
-			brand: product.brand,
-			name: product.name,
-			subtitle: product.subtitle,
-			url: product.url,
-			manualUrl: product.manualUrl,
-			images: product.images,
-			specs: product.specs,
-			warranty: product.warranty
-		}
-		for (var key in product) { //delete undefined keys as Firebase won't accept
-			if (!product[key]) delete product[key];
-		}
-		if (product.images) removeImgBlanks(product.images);
-		ref.child('products/' + oldProduct.name.toLowerCase()).remove();
-		ref.child('products/' + product.name.toLowerCase()).set(product);
-		if (product.name !== oldProduct.name) {
-			var path = 'brands/' + product.brand + '/products/';
-			ref.child(path + oldProduct.name.toLowerCase()).remove();
-			ref.child(path + product.name.toLowerCase()).set(product.name.toLowerCase());
-		}
-		return true;
-	}
+//	this.removeBrand = function(brand) {
+//		var confirmation = confirm('Are you sure you want to delete \'' + brand.name + '\'?\n' +
+//			'This will also delete all of this brand\'s products.')
+//		if (confirmation) {
+//			for (var product in brand.products) {
+//				var prod = firebaseProducts.$getRecord(product);
+//				removeItem(prod, firebaseProducts)
+//			}
+//			removeItem(brand, firebaseBrands)
+//			return true;
+//		}
+//		return false;
+//	}
+//
+//	// PRODUCT
+//	this.addProduct = function(product) {
+//		var write = true;
+//		// check if product exists
+//		ref.child('products').once("value", function(snapshot) {
+//			var productExists = snapshot.child(product.name.toLowerCase()).exists();
+//			if (productExists) {
+//				var save = confirm('A product with this name already exists. Do you want to overwrite it?')
+//				if (!save) {
+//					write = false;
+//				}
+//			}
+//		})
+//		if (write) {
+//			product.brand = product.brand.toLowerCase();
+//			removeImgBlanks(product.images);
+//			ref.child('products').child(product.name.toLowerCase()).set(product, confirmation);
+//			ref.child('brands/' + product.brand + '/products/' +
+//				product.name.toLowerCase()).set(product.name.toLowerCase())
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+//
+//	this.saveProduct = function(product, oldProduct) {
+//		product = {
+//			brand: product.brand,
+//			name: product.name,
+//			subtitle: product.subtitle,
+//			url: product.url,
+//			manualUrl: product.manualUrl,
+//			images: product.images,
+//			specs: product.specs,
+//			warranty: product.warranty
+//		}
+//		for (var key in product) { //delete undefined keys as Firebase won't accept
+//			if (!product[key]) delete product[key];
+//		}
+//		if (product.images) removeImgBlanks(product.images);
+//		ref.child('products/' + oldProduct.name.toLowerCase()).remove();
+//		ref.child('products/' + product.name.toLowerCase()).set(product);
+//		if (product.name !== oldProduct.name) {
+//			var path = 'brands/' + product.brand + '/products/';
+//			ref.child(path + oldProduct.name.toLowerCase()).remove();
+//			ref.child(path + product.name.toLowerCase()).set(product.name.toLowerCase());
+//		}
+//		return true;
+//	}
+//
+//	this.removeProduct = function(product) {
+//		var confirmation = confirm('Are you sure you want to delete ' + product.name + '?')
+//		if (confirmation) {
+//			var path = 'brands/' + product.brand + '/products/' + product.name.toLowerCase();
+//			ref.child(path).remove(); // delete product from brand
+//			ref.child(path).remove();
+//			removeItem(product, firebaseProducts);
+//			return true;
+//		}
+//		return false;
+//	}
 
-	this.removeProduct = function(product) {
-		var confirmation = confirm('Are you sure you want to delete ' + product.name + '?')
-		if (confirmation) {
-			var path = 'brands/' + product.brand + '/products/' + product.name.toLowerCase();
-			ref.child(path).remove(); // delete product from brand
-			ref.child(path).remove();
-			removeItem(product, firebaseProducts);
-			return true;
-		}
-		return false;
-	}
-
-	var data = [{
+	var brands = [{
 		"logo": "http://acousticamplification.com/wp-content/uploads/2014/11/Acoustic-logo.jpg",
 		"name": "Acoustic",
 		"phone": "855-272-1090",
@@ -459,6 +447,6 @@ var app = angular.module('andale')
 		"url": "http://williamspianos.com/"
 	}];
 
-	this.data = data;
+	this.brands = brands;
 
 }]);

@@ -112,7 +112,7 @@
     
 		<!-- DATA -->
     <div class="main-container container">
-      <div ng-repeat="brand in data | filter:search"
+      <div ng-repeat="brand in brands | orderBy:'name'"
       ng-init="editShow=false">
         <div ng-mouseover="brandMouseOver= true" ng-mouseleave="brandMouseOver = false"
           class="brand-header-container">
