@@ -1,87 +1,91 @@
 var app = angular.module('andale')
 .service('dataService', ['$http', function($http) {
 
-	function removeItem(item, array) {
-		array.$remove(item).then(function(ref) {
-			console.log('Deleted:', item.name, ref)
-		});
+	function isVerb(str) {
+		return str.toLowerCase() === 'a' || 'e' || 'i' || 'o' || 'u';
 	}
 
 	function removeImgBlanks(arr) {
 		if (arr) {
 			for (var i = arr.length - 1; i >= 0; i--) {
 				if (!arr[i]) arr.splice(i, 1);
-			}
-		}
-	}
+			};
+		};
+	};
 
-	function confirmation(error) {
-		if (error) {
-			alert("Data could not be saved. Please try again.\nError: " + error);
-		} else {
-			alert("Data added succesfully!");
-		}
-	}
+	function findByName(name, array) {
+		for (var i = 0; i < array.length; i++) {
+			if (array[i].name.toLowerCase() === name.toLowerCase()) {
+				return {
+					data: array[i],
+					index: i
+				}
+			};
+		};
+		return false;
+	};
+
+	function confirmOverwrite(label) {
+		var article = isVerb(label.substr(0, 1)) ? 'An ' : 'A ';
+		return confirm(article + label + ' with this name already exists. Do you want to overwrite it?');
+	};
 
 	// BRAND
 	this.addBrand = function(brand) {
-		var write = true;
-		brands.forEach(function(existingBrand) {
-			if (brand.name.toLowerCase() === existingBrand.name.toLowerCase()) {
-				var save = confirm('A brand with this name already exists. Do you want to overwrite it?')
-				if (!save) {
-					write = false;
-				}
-			}
-		});
-		if (write) {
+		var dup = findByName(brand.name, brands);
+		if (!dup) {
 			brands.push(brand);
+		} else if (confirmOverwrite('brand')) {
+			brands[dup.index] = brand;
+		} else {
+			return false;
 		}
-	}
+		return true;
+	};
 
 	this.saveBrand = function(newBrand, oldBrand) {
-		for (var i = 0; i < brands.length; i++) {
-			if(brands[i].name === oldBrand.name) {
-				brands[i] = newBrand;
-				break;
-			}
-		}
-	}
+		var indexToDelete;
+		if (newBrand.name !== oldBrand.name) {
+			var dup = findByName(newBrand.name, brands);
+			if (dup) {
+				if (confirmOverwrite('brand')) {
+					indexToDelete = brands[dup.index];
+				} else {
+					return false;
+				};
+			};
+		};
+		var index = findByName(oldBrand.name, brands).index;
+		brands[index] = newBrand;
+		if (indexToDelete) brands.splice(indexToDelete, 1);
+		return true;
+	};
 
 	this.removeBrand = function(brand) {
-		for (var i = 0; i < brands.length; i++) {
-			if (brands[i].name === brand.name) {
-				brands.splice(i, 1);
-				break;
-			}
-		}
-	}
+		var index = findByName(brand.name, brands).index;
+		brands.splice(index, 1);
+	};
 
-//	// PRODUCT
-//	this.addProduct = function(product) {
-//		var write = true;
-//		// check if product exists
-//		ref.child('products').once("value", function(snapshot) {
-//			var productExists = snapshot.child(product.name.toLowerCase()).exists();
-//			if (productExists) {
-//				var save = confirm('A product with this name already exists. Do you want to overwrite it?')
-//				if (!save) {
-//					write = false;
-//				}
-//			}
-//		})
-//		if (write) {
-//			product.brand = product.brand.toLowerCase();
-//			removeImgBlanks(product.images);
-//			ref.child('products').child(product.name.toLowerCase()).set(product, confirmation);
-//			ref.child('brands/' + product.brand + '/products/' +
-//				product.name.toLowerCase()).set(product.name.toLowerCase())
-//			return true;
-//		} else {
-//			return false;
-//		}
-//	}
-//
+	// PRODUCT
+	this.addProduct = function(product) {
+		var products;
+		for (var key in product) {
+			if (!product[key]) delete product[key];
+		};
+		// find product's brand in brands array
+		brands.some(function(brand) {
+			if (brand.name === product.brand) {
+				products = brand.products;
+				return true;
+			};
+		});
+		var save = confirmSave(products, product, 'product');
+		if(save) {
+			products.push(product);
+		};
+		return write;
+	};
+
 //	this.saveProduct = function(product, oldProduct) {
 //		product = {
 //			brand: product.brand,

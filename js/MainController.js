@@ -24,8 +24,9 @@ var app = angular.module('andale')
     }
     
     $scope.addBrand = function(brand) {
-      dataService.addBrand(brand);
-      clear('newBrandForm');
+      if(dataService.addBrand(brand)) {
+      	clear('newBrandForm');
+			}
     }
 
     $scope.saveBrand = function(newBrand, oldBrand) {
@@ -34,9 +35,9 @@ var app = angular.module('andale')
     };
     
     $scope.removeBrand = function(brand) {
-			var confirmation = confirm('Are you sure you want to delete \'' + brand.name + '\'?\n' +
+			var confirmRemove = confirm('Are you sure you want to delete \'' + brand.name + '\'?\n' +
 				'This will also delete all of this brand\'s products.')
-			if (confirmation) {
+			if (confirmRemove) {
 				dataService.removeBrand(brand);
         clear('editBrandForm');
       }
