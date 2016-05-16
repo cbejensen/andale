@@ -302,12 +302,12 @@ h2 {
 
 .info-icon-container span {
 	line-height: 30px;
+	transition: .5s;
 	top: 0;
 }
 
 .info-icon-container span:hover {
 	color: #E7E009;
-	transition: .5s;
 	cursor: pointer;
 }
 

@@ -13,11 +13,11 @@ var app = angular.module('andale')
 		};
 	};
 
-	function findByName(name, array) {
-		for (var i = 0; i < array.length; i++) {
-			if (array[i].name.toLowerCase() === name.toLowerCase()) {
+	function findByName(name, arr) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i].name.toLowerCase() === name.toLowerCase()) {
 				return {
-					data: array[i],
+					data: arr[i],
 					index: i
 				}
 			};
@@ -68,48 +68,31 @@ var app = angular.module('andale')
 
 	// PRODUCT
 	this.addProduct = function(product) {
-		var products;
-		for (var key in product) {
-			if (!product[key]) delete product[key];
+		var brand = brands[findByName(product.brand, brands).index];
+		console.log(brand);
+		if (brand.products) {
+			console.log('there are products')
+			var dup = findByName(product.name, brand.products);
+			if (dup) {
+				console.log('dup')
+				var overwrite = confirmOverwrite('product');
+				if (overwrite) {
+					brand.products.splice([dup.index], 1);
+				} else {
+					return false;
+				}
+			}
+			brand.products.push(product);
+		} else {
+			brand.products = [product];
 		};
-		// find product's brand in brands array
-		brands.some(function(brand) {
-			if (brand.name === product.brand) {
-				products = brand.products;
-				return true;
-			};
-		});
-		var save = confirmSave(products, product, 'product');
-		if(save) {
-			products.push(product);
-		};
-		return write;
+		return true;
 	};
 
-//	this.saveProduct = function(product, oldProduct) {
-//		product = {
-//			brand: product.brand,
-//			name: product.name,
-//			subtitle: product.subtitle,
-//			url: product.url,
-//			manualUrl: product.manualUrl,
-//			images: product.images,
-//			specs: product.specs,
-//			warranty: product.warranty
-//		}
-//		for (var key in product) { //delete undefined keys as Firebase won't accept
-//			if (!product[key]) delete product[key];
-//		}
-//		if (product.images) removeImgBlanks(product.images);
-//		ref.child('products/' + oldProduct.name.toLowerCase()).remove();
-//		ref.child('products/' + product.name.toLowerCase()).set(product);
-//		if (product.name !== oldProduct.name) {
-//			var path = 'brands/' + product.brand + '/products/';
-//			ref.child(path + oldProduct.name.toLowerCase()).remove();
-//			ref.child(path + product.name.toLowerCase()).set(product.name.toLowerCase());
-//		}
-//		return true;
-//	}
+	this.saveProduct = function(product, oldProduct) {
+
+
+	}
 //
 //	this.removeProduct = function(product) {
 //		var confirmation = confirm('Are you sure you want to delete ' + product.name + '?')

@@ -1,6 +1,9 @@
 var app = angular.module('andale');
 
 app.directive('brandForm', function() {
+	// this directive uses link
+	// while the directive below (productForm) uses controller
+
   return {
     restrict: 'AE',
     scope: {
@@ -46,7 +49,9 @@ app.directive('brandForm', function() {
 });
 
 app.directive('productForm', function() {
-  
+	// this directive uses controller
+	// while the directive above (brandForm) uses link
+
   var productController = ['$scope', 'dataService', function($scope, dataService) {
   
     $scope.brands = dataService.brands;
@@ -55,10 +60,7 @@ app.directive('productForm', function() {
       if($scope.oldProduct) {
         $scope.product = angular.copy($scope.oldProduct);
       } else {
-        $scope.product = {
-          images: [''],
-          faqs: [{question: '', answer: ''}]
-        };
+        $scope.product = {};
       }
     }
     reset();
@@ -73,10 +75,6 @@ app.directive('productForm', function() {
       } else {
         $scope.product.images = ['']
       }
-    }
-
-    $scope.addBullets = function() {
-      $scope.product.specs = '\u2022 ' + $scope.product.specs.replace(/[\r\n]/g, "\n\u2022 ");
     }
   
     $scope.submitProduct = function(product) {
