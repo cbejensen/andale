@@ -13,13 +13,24 @@ var app = angular.module('andale')
 		};
 	};
 
-	function findByName(name, arr) {
+	function getArray(type, item) {
+		var arr;
+		if (type === 'brand') {
+			arr = brands;
+		} else { // type === 'product'
+			var index = getIndex(item.brand, brands);
+			if (!brands[index].products) {
+				brands[index].products = [];
+			}
+			arr = brands[index].products;
+		};
+		return arr;
+	}
+
+	function getIndex(name, arr) {
 		for (var i = 0; i < arr.length; i++) {
 			if (arr[i].name.toLowerCase() === name.toLowerCase()) {
-				return {
-					data: arr[i],
-					index: i
-				}
+				return i;
 			};
 		};
 		return false;
@@ -30,81 +41,42 @@ var app = angular.module('andale')
 		return confirm(article + label + ' with this name already exists. Do you want to overwrite it?');
 	};
 
-	// BRAND
-	this.addBrand = function(brand) {
-		var dup = findByName(brand.name, brands);
-		if (!dup) {
-			brands.push(brand);
-		} else if (confirmOverwrite('brand')) {
-			brands[dup.index] = brand;
+	this.create = function(type, item) {
+		var arr = getArray(type, item);
+		var dupIndex = getIndex(item.name, arr);
+		if (dupIndex === false) {
+			arr.push(item);
+		} else if (confirmOverwrite(type)) {
+			arr[dupIndex] = item;
 		} else {
 			return false;
-		}
-		return true;
-	};
-
-	this.saveBrand = function(newBrand, oldBrand) {
-		var indexToDelete;
-		if (newBrand.name !== oldBrand.name) {
-			var dup = findByName(newBrand.name, brands);
-			if (dup) {
-				if (confirmOverwrite('brand')) {
-					indexToDelete = brands[dup.index];
-				} else {
-					return false;
-				};
-			};
-		};
-		var index = findByName(oldBrand.name, brands).index;
-		brands[index] = newBrand;
-		if (indexToDelete) brands.splice(indexToDelete, 1);
-		return true;
-	};
-
-	this.removeBrand = function(brand) {
-		var index = findByName(brand.name, brands).index;
-		brands.splice(index, 1);
-	};
-
-	// PRODUCT
-	this.addProduct = function(product) {
-		var brand = brands[findByName(product.brand, brands).index];
-		console.log(brand);
-		if (brand.products) {
-			console.log('there are products')
-			var dup = findByName(product.name, brand.products);
-			if (dup) {
-				console.log('dup')
-				var overwrite = confirmOverwrite('product');
-				if (overwrite) {
-					brand.products.splice([dup.index], 1);
-				} else {
-					return false;
-				}
-			}
-			brand.products.push(product);
-		} else {
-			brand.products = [product];
 		};
 		return true;
-	};
-
-	this.saveProduct = function(product, oldProduct) {
-
-
 	}
-//
-//	this.removeProduct = function(product) {
-//		var confirmation = confirm('Are you sure you want to delete ' + product.name + '?')
-//		if (confirmation) {
-//			var path = 'brands/' + product.brand + '/products/' + product.name.toLowerCase();
-//			ref.child(path).remove(); // delete product from brand
-//			ref.child(path).remove();
-//			removeItem(product, firebaseProducts);
-//			return true;
-//		}
-//		return false;
-//	}
+
+	this.update = function(type, newItem, oldItem) {
+		var arr = getArray(type, oldItem);
+		var dupIndex = getIndex(newItem.name, arr);
+		function write() {
+			var index = getIndex(oldItem.name, arr);
+			arr[index] = newItem;
+		};
+		if (newItem.name === oldItem.name || dupIndex === false) {
+			write();
+		} else if (confirmOverwrite(type)) {
+			write();
+			arr.splice(dupIndex, 1);
+		} else {
+			return false;
+		};
+		return true;
+	}
+
+	this.remove = function(type, item) {
+		var arr = getArray(type, item);
+		var index = getIndex(item.name, arr);
+		arr.splice(index, 1);
+	};
 
 	var brands = [{
 		"logo": "http://acousticamplification.com/wp-content/uploads/2014/11/Acoustic-logo.jpg",

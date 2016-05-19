@@ -270,11 +270,11 @@ h2 {
 	position: absolute;
 	top: 5px;
 	right: 10px;
-	cursor: pointer;
 }
 
 .info-box-close:hover {
 	color: red;
+	cursor: pointer;
 }
 
 .info-box-email span {

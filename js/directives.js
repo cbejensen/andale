@@ -29,9 +29,11 @@ app.directive('brandForm', function() {
       scope.$watch('oldBrand', function(newValue, oldValue) {
         if (newValue) reset();
       }, true);
+
+			var type = 'brand';
     
       scope.submitBrand = function(brand) {
-        scope.submit()(brand, scope.oldBrand);
+        scope.submit()(type, brand, scope.oldBrand);
         reset();
       }
       
@@ -41,7 +43,7 @@ app.directive('brandForm', function() {
       }
       
       scope.removeBrand = function() {
-        scope.remove()(scope.oldBrand);
+        scope.remove()(type, scope.oldBrand);
         reset();
       }
     }
@@ -76,9 +78,11 @@ app.directive('productForm', function() {
         $scope.product.images = ['']
       }
     }
+
+		var type = 'product';
   
     $scope.submitProduct = function(product) {
-      $scope.submit()(product, $scope.oldProduct);
+      $scope.submit()(type, product, $scope.oldProduct);
       reset();
     }
     
@@ -88,7 +92,7 @@ app.directive('productForm', function() {
     }
     
     $scope.removeProduct = function() {
-      $scope.remove()($scope.oldProduct);
+      $scope.remove()(type, $scope.oldProduct);
       reset();
     }
     
