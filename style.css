@@ -323,6 +323,22 @@ h2 {
   margin-bottom: 10px;
 }
 
+
+.product-buttons > :nth-child(1):hover,
+.product-btn-1 span {
+	color: #9F111B;
+}
+
+.product-buttons > :nth-child(2):hover,
+.product-btn-2 span {
+	color: #259073;
+}
+
+.product-buttons > :nth-child(3):hover,
+.product-btn-3 span {
+	color: #337ab7;
+}
+
 .product-edit {
   position: absolute;
   right: 0;

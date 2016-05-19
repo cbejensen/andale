@@ -56,6 +56,12 @@ var app = angular.module('andale')
         }
       }
     }
+
+		$scope.showImgGallery = function(product, btnNum) {
+			product.showImg = !product.showImg;
+			product.imgToShow = 0;
+
+		}
     
     $scope.productImgSelect = function(product, index) {
       product.imgToShow = index;

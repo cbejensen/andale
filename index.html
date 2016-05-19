@@ -150,25 +150,22 @@
             </div>
 
             <div class="product-buttons">
-              <button type="button" class="btn btn-default" ng-if="product.images"
-                ng-click="product.showImg = !product.showImg; product.imgToShow = 0"
-                title="Show Images" aria-label="Show Images">
+              <button type="button" class="btn btn-default" ng-class="{'product-btn-1' : product.showImg}" ng-if="product.images"
+              ng-click="showImgGallery(product)" title="Show Images" aria-label="Show Images">
                 <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
               </button>
 
-							<button type="button" class="btn btn-default" ng-if="product.specs"
-								 ng-click="product.showSpecs = !product.showSpecs" title="Show Specs"
-								 aria-label="Show Specs">
+							<button type="button" class="btn btn-default" ng-class="{'product-btn-2' : product.showSpecs}" ng-if="product.specs"
+							ng-click="product.showSpecs = !product.showSpecs" title="Show Specs"
+							aria-label="Show Specs">
 								<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 							</button>
 
-							<a class="product-manual" ng-if="product.manualUrl" href={{product.manualUrl}}
-									 target='_blank'>
-								<button type="button" class="btn btn-default" title="Open Manual"
-											 aria-label="Open Manual">
-									<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-								</button>
+							<a class="product-manual btn btn-default" ng-if="product.manualUrl"
+							href={{product.manualUrl}} target='_blank' title="Open Manual">
+								<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
 							</a>
+
             </div>
             
             <div ng-if="product.showImg">
