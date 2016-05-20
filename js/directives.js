@@ -1,6 +1,9 @@
 var app = angular.module('andale');
 
 app.directive('brandForm', function() {
+	// this directive uses link
+	// while the directive below (productForm) uses controller
+
   return {
     restrict: 'AE',
     scope: {
@@ -26,9 +29,11 @@ app.directive('brandForm', function() {
       scope.$watch('oldBrand', function(newValue, oldValue) {
         if (newValue) reset();
       }, true);
+
+			var type = 'brand';
     
       scope.submitBrand = function(brand) {
-        scope.submit()(brand, scope.oldBrand);
+        scope.submit()(type, brand, scope.oldBrand);
         reset();
       }
       
@@ -38,7 +43,7 @@ app.directive('brandForm', function() {
       }
       
       scope.removeBrand = function() {
-        scope.remove()(scope.oldBrand);
+        scope.remove()(type, scope.oldBrand);
         reset();
       }
     }
@@ -46,8 +51,10 @@ app.directive('brandForm', function() {
 });
 
 app.directive('productForm', function() {
-  
-  var productController = ['$scope', '$firebaseArray', 'dataService', function($scope, $firebaseArray, dataService) {
+	// this directive uses controller
+	// while the directive above (brandForm) uses link
+
+  var productController = ['$scope', 'dataService', function($scope, dataService) {
   
     $scope.brands = dataService.brands;
     
@@ -55,10 +62,7 @@ app.directive('productForm', function() {
       if($scope.oldProduct) {
         $scope.product = angular.copy($scope.oldProduct);
       } else {
-        $scope.product = {
-          images: [''],
-          faqs: [{question: '', answer: ''}]
-        };
+        $scope.product = {};
       }
     }
     reset();
@@ -75,12 +79,10 @@ app.directive('productForm', function() {
       }
     }
 
-    $scope.addBullets = function() {
-      $scope.product.specs = '\u2022 ' + $scope.product.specs.replace(/[\r\n]/g, "\n\u2022 ");
-    }
+		var type = 'product';
   
     $scope.submitProduct = function(product) {
-      $scope.submit()(product, $scope.oldProduct);
+      $scope.submit()(type, product, $scope.oldProduct);
       reset();
     }
     
@@ -90,7 +92,7 @@ app.directive('productForm', function() {
     }
     
     $scope.removeProduct = function() {
-      $scope.remove()($scope.oldProduct);
+      $scope.remove()(type, $scope.oldProduct);
       reset();
     }
     
@@ -134,22 +136,22 @@ app.directive('renderThumbnail', function() {
 
 app.directive('setClassWhenAtTop', function($window) {
 
-  var $win = angular.element($window);
+	var $win = angular.element($window);
 
-  return {
-    restrict: 'A',
-    link: function (scope, element, attrs) {
+	return {
+		restrict: 'A',
+		link: function (scope, element, attrs) {
 
-      var classToAdd = attrs.setClassWhenAtTop;
-      var offsetTop = element.prop('offsetTop');
+			var classToAdd = attrs.setClassWhenAtTop;
+			var offsetTop = element.prop('offsetTop');
 
-      $win.on('scroll', function (e) {
+			$win.on('scroll', function (e) {
 				if ($win[0].scrollY >= offsetTop) {
 					element.addClass(classToAdd);
-        } else {
+				} else {
 					element.removeClass(classToAdd);
-        }
-      });
-    }
-  };
+				}
+			});
+		}
+	};
 });

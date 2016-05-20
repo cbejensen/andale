@@ -10,7 +10,7 @@
   
   <div class="form-product-brand" ng-show="isNew">
     Brand<span class="red-asterisk"> *</span><br />
-    <select ng-options="brand.name as brand.name for brand in brands" ng-model="product.brand" required></select>
+		<select ng-options="brand.name as brand.name for brand in brands | orderBy:'name'" ng-model="product.brand" required></select>
   </div><!-- //not sure why, but 'required' does nothing on select tags when ng-model is present
 --><div class="form-product-name add-product-input">
     Name<span class="red-asterisk"> *</span><br />
@@ -45,8 +45,6 @@
     
   <div class="form-product-specs-container form-row">
     Specs
-    <!-- <button class="add-bullets-button btn btn-success" type="button"
-      ng-mousedown="addBullets()">+ Add Bullets</button><br /> -->
     <textarea type="text" class="product-specs" ng-model="product.specs"></textarea>
   </div>
 

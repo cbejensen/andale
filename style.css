@@ -1,3 +1,7 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
 a {
   color: black;
 }
@@ -167,10 +171,6 @@ a {
   cursor: pointer;
 }
 
-form {
-  max-width: 800px;
-}
-
 .form-box {
   opacity: 1;
   width: 80%;
@@ -189,6 +189,11 @@ form {
 
 .form-buttons {
   text-align: center;
+}
+
+.form-inner-container {
+	margin: auto;
+	max-width: 800px;
 }
 
 .form-row {
@@ -231,8 +236,8 @@ h2 {
 }
 
 .hazy-background {
-  background-color: #FBFBFB;
-  opacity: .9;
+	background-color: #FBFBFB;
+	opacity: .9;
   z-index: 200;
   height: 100vh;
   width: 100vw;
@@ -266,11 +271,11 @@ h2 {
 	position: absolute;
 	top: 5px;
 	right: 10px;
-	cursor: pointer;
 }
 
 .info-box-close:hover {
 	color: red;
+	cursor: pointer;
 }
 
 .info-box-email span {
@@ -298,12 +303,12 @@ h2 {
 
 .info-icon-container span {
 	line-height: 30px;
+	transition: .5s;
 	top: 0;
 }
 
 .info-icon-container span:hover {
 	color: #E7E009;
-	transition: .5s;
 	cursor: pointer;
 }
 
@@ -317,6 +322,22 @@ h2 {
 .product-buttons {
   clear: both;
   margin-bottom: 10px;
+}
+
+
+.product-buttons > :nth-child(1):hover,
+.product-btn-1 span {
+	color: #9F111B;
+}
+
+.product-buttons > :nth-child(2):hover,
+.product-btn-2 span {
+	color: #259073;
+}
+
+.product-buttons > :nth-child(3):hover,
+.product-btn-3 span {
+	color: #337ab7;
 }
 
 .product-edit {

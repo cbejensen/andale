@@ -1,89 +1,67 @@
 var app = angular.module('andale')
-.controller('MainController', ['$scope', '$sce', 'dataService', '$firebaseArray', '$firebaseObject',
-  function ($scope, $sce, dataService, $firebaseArray, $firebaseObject) {
+.controller('MainController', ['$scope', '$sce', 'dataService',
+  function ($scope, $sce, dataService) {
     
     $scope.brands = dataService.brands;
-    $scope.products = dataService.products;
     
-    $scope.allShown = false;
+		$scope.infoBox, $scope.newBrandForm, $scope.newProductForm,
+			$scope.editBrandForm, $scope.editProductForm = false;
     
-    function clear(form) {
-      $scope[form] = false;
-      $scope.search = '';
+    function clear() {
+      $scope.infoBox = $scope.newBrandForm = $scope.newProductForm = $scope.editBrandForm = $scope.editProductForm = false;
       $scope.commandTray = false;
     }
-    
-    $scope.changeSearch = function(str) {
-      console.log(str)
-      $scope.search = str;
-    }
-    
+
     $scope.showCommandTray = function() {
       $scope.commandTray = !$scope.commandTray;
     }
     
-    // BRAND
-    $scope.editBrand = function(brand) {
-      $scope.oldItem = brand;
-      $scope.editBrandForm = true;
-    }
-    
-    $scope.addBrand = function(brand) {
-      dataService.addBrand(brand);
-      clear('newBrandForm');
-    }
+		$scope.create = function(type, item) {
+			if (dataService.create(type, item)) {
+				clear();
+				$scope.search = item.name;
+			};
+		};
 
-    $scope.saveBrand = function(newBrand, oldBrand) {
-      dataService.saveBrand(newBrand, oldBrand);
-      clear('editBrandForm');
+    $scope.update = function(type, newItem, oldItem) {
+      if (dataService.update(type, newItem, oldItem)) {
+				clear();
+				$scope.search = newItem.name;
+			}
     };
     
-    $scope.removeBrand = function(brand) {
-      if(dataService.removeBrand(brand)) {
-        clear('editBrandForm');
-      }
-    }
-    
-    // PRODUCT
-    $scope.editProduct = function(product) {
-      $scope.oldItem = product;
-      $scope.editProductForm = true;
-    }
-    
-    $scope.addProduct = function(product) {
-      if(dataService.addProduct(product)) {
-        clear('newProductForm');
+    $scope.remove = function(type, item) {
+			var msg = 'Are you sure you want to delete \'' + item.name + '\'?\n';
+			if (type === 'brand') msg += 'This wiil also delete all of this brand\'s products.';
+			var confirmRemove = confirm(msg);
+			if (confirmRemove) {
+				dataService.remove(type, item);
+        clear();
       }
     };
-    
-    $scope.saveProduct = function(product, oldProduct) {
-      if(dataService.saveProduct(product, oldProduct)) {
-        console.log($scope.products);
-        var ref = new Firebase("https://andale.firebaseio.com/");
-        ref.on("value", function(snapshot) {
-          $scope.products = $firebaseArray(ref.child('products/'))
-        }, function (errorObject) {
-          console.log("The read failed: " + errorObject.code);
-        });
-        clear('editProductForm');
-      }
-    }
-    
-    $scope.removeProduct = function(product) {
-      if(dataService.removeProduct(product)) {
-        clear('editProductForm');
-      }
-    }
+
+		$scope.edit = function(type, item) {
+			var str = type.substr(0, 1).toUpperCase() + type.substr(1);
+			var form = 'edit' + str + 'Form';
+			$scope.oldItem = item;
+			$scope[form] = true;
+		};
     
     $scope.filterProducts = function(brand) {
       return function(value) {
-        if(brand) {
+        if (brand) {
           return value.brand === brand;
         } else {
           return true;
         }
       }
     }
+
+		$scope.showImgGallery = function(product, btnNum) {
+			product.showImg = !product.showImg;
+			product.imgToShow = 0;
+
+		}
     
     $scope.productImgSelect = function(product, index) {
       product.imgToShow = index;
@@ -91,38 +69,16 @@ var app = angular.module('andale')
     }
     
     $scope.productImgScroll = function(right, product, numOfImages) {
-      //false if left, true if right
-      if(right) {
-        if(product.imgToShow < numOfImages - 1) {
-          product.imgToShow += 1;
-        } else {
-          product.imgToShow = 0;
-        }
-      } else {
-        if(product.imgToShow >= 1) {
-          product.imgToShow -= 1
-        } else {
-          product.imgToShow = numOfImages - 1;
-        }
-      }
-    }
-    
-    // Show all pics and specs
-    $scope.showAll = function() {
-      $scope.allShown = !$scope.allShown;
-      $scope.products.forEach(function(product) {
-        product.showImg = true;
-        product.showSpecs = true;
-      });
-    };
-    
-    // Hide all pics and specs
-    $scope.hideAll = function() {
-      $scope.allShown = !$scope.allShown;
-      $scope.products.forEach(function(product) {
-        product.showImg = false;
-        product.showSpecs = false;
-      });
+      // right is true, false is left
+			if (right && product.imgToShow < numOfImages - 1) {
+				product.imgToShow += 1;
+			} else if (right) {
+				product.imgToShow = 0;
+			} else if (product.imgToShow >= 1) {
+				product.imgToShow -= 1
+			} else {
+				product.imgToShow = numOfImages - 1;
+			};
     };
 
 }]);
