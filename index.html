@@ -58,17 +58,19 @@
 					</div>
 				</div>
 
-				<!-- new -->
-				<brand-form ng-show="newBrandForm" is-new="true"
-										cancel="newBrandForm = false" submit="create"></brand-form>
-				<product-form ng-show="newProductForm" is-new="true"
-											cancel="newProductForm = false" submit="create"></product-form>
+				<div class="form-inner-container">
+					<!-- new -->
+					<brand-form ng-show="newBrandForm" is-new="true"
+					cancel="newBrandForm = false" submit="create"></brand-form>
+					<product-form ng-show="newProductForm" is-new="true"
+					cancel="newProductForm = false" submit="create"></product-form>
 
-				<!-- edit -->
-				<brand-form ng-show="editBrandForm" old-brand="oldItem"
-										cancel="editBrandForm = false" submit="update" remove="remove"></brand-form>
-				<product-form ng-show="editProductForm" old-product="oldItem"
-										cancel="editProductForm = false" submit="update" remove="remove"></product-form>
+					<!-- edit -->
+					<brand-form ng-show="editBrandForm" old-brand="oldItem"
+					cancel="editBrandForm = false" submit="update" remove="remove"></brand-form>
+					<product-form ng-show="editProductForm" old-product="oldItem"
+					cancel="editProductForm = false" submit="update" remove="remove"></product-form>
+				</div>
 
 			</div>
     </div>
@@ -165,7 +167,6 @@
 							href={{product.manualUrl}} target='_blank' title="Open Manual">
 								<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
 							</a>
-
             </div>
             
             <div ng-if="product.showImg">

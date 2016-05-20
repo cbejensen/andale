@@ -171,10 +171,6 @@ a {
   cursor: pointer;
 }
 
-form {
-  max-width: 800px;
-}
-
 .form-box {
   opacity: 1;
   width: 80%;
@@ -193,6 +189,11 @@ form {
 
 .form-buttons {
   text-align: center;
+}
+
+.form-inner-container {
+	margin: auto;
+	max-width: 800px;
 }
 
 .form-row {
