@@ -79,7 +79,7 @@ var app = angular.module('andale')
 	};
 
 	var brands = [{
-		"logo": "https://acousticamplification.com/wp-content/uploads/2014/11/Acoustic-logo.jpg",
+		"logo": "../images/Acoustic-logo.jpg",
 		"name": "Acoustic",
 		"phone": "855-272-1090",
 		"products": [{
@@ -174,7 +174,7 @@ var app = angular.module('andale')
 		"showName": false,
 		"url": "https://harbingerproaudio.com/"
 	}, {
-		"logo": "https://simmonsdrums.net/wp-content/uploads/2014/05/0001_Simmons-SD1500-Kit_FT-150x150.jpg",
+		"logo": "../images/Simmons-logo.png",
 		"name": "Simmons",
 		"phone": "888-621-4008",
 		"products": [{
@@ -297,10 +297,10 @@ var app = angular.module('andale')
 			"url": "https://simmonsdrums.net/product/stryke-6/",
 			"warranty": "90 days"
 		}],
-		"showName": true,
+		"showName": false,
 		"url": "https://simmonsdrums.net/"
 	}, {
-		"logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8grfb16PkQKBH3gZhkBxQ-KJobSKOCj6HXCGAtHgR5yamt-7BZg",
+		"logo": "../images/williams-logo.png",
 		"name": "Williams",
 		"phone": "888-241-1582",
 		"products": [{
@@ -340,7 +340,7 @@ var app = angular.module('andale')
 			"url": "https://williamspianos.com/product/williams-rhapsody-2-digital-piano/",
 			"warranty": "1 year"
 		}],
-		"showName": true,
+		"showName": false,
 		"url": "https://williamspianos.com/"
 	}];
 

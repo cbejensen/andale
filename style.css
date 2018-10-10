@@ -42,6 +42,11 @@ a {
   display: block;
 }
 
+.brand-phone {
+  font-size: 2rem;
+  margin-top: 15px;
+}
+
 .button-delete {
   margin: auto;
 }

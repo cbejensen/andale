@@ -125,11 +125,13 @@
           class="brand-header-container">
           <a href={{brand.url}} target='_blank'>
             <div class="brand-header">
-              <img ng-src="{{brand.logo}}">
+              <img ng-src="{{brand.logo}}" alt="{{brand.name}}">
               <div ng-show="brand.showName">{{brand.name}}</div>
             </div>
           </a>
-          <div>{{brand.phone}}</div>
+          <div class="brand-phone">
+            <a href="tel:+1-{{brand.phone}}">{{brand.phone}}</a>
+          </div>
           <div class="brand-edit">
             <span ng-show="brandMouseOver" class="glyphicon glyphicon-pencil"
               aria-label="EDIT" ng-click="edit('brand', brand)"></span>
