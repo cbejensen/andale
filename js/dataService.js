@@ -84,7 +84,14 @@ var app = angular.module('andale')
 		"phone": "855-272-1090",
 		"products": [{
 			"brand": "acoustic",
-			"images": ["https://acousticamplification.com/wp-content/uploads/2014/11/A1000-1-main.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A1000-3-main.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A1000-4-main.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A1000-5-main.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/Acoustic_A1000-DSP-AND-BLUE.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/Acoustic_A1000_DIRECT-OUTPUT.jpg"],
+			"images": [
+        "../images/A1000-1-main.jpg",
+        "../images/A1000-3-main.jpg",
+        "../images/A1000-4-main.jpg",
+        "../images/A1000-5-main.jpg",
+        "../images/A1000-DSP-AND-BLUE.jpg",
+        "../images/A1000_DIRECT-OUTPUT.jpg"
+      ],
 			"manualUrl": "https://acousticamplification.com/wp-content/uploads/2014/11/usermanual/A1000-Manual.pdf",
 			"name": "A1000",
 			"specs": "• 100 (2 x 50) watts true stereo RMS output\n• Class D power amplifier\n• Two 8″ full-range neodymium co-axial speakers\n• Two separate channels\n• Dual inputs with combo XLR-1/4″ jacks on each channel\n• Two digital effects processors (separate for each channel)\n    • 20 Preset programs\n    • 20 User Programs\n    • Reverb, Chorus, Delay, Flanger\n• 3-band EQ with sweepable mid-range (each channel)\n    • Low +/-15dB @ 80Hz\n    • Mid +/-15dB, 500Hz to 1.2kHz (sweepable)\n    • High +/-15dB @ 10kHz\n• Automatic feedback elimination circuit (12 filter, DSP-based, each channel)\n• Auxiliary Bluetooth connectivity for instant backing tracks\n• XLR direct output with ground lift, pre-post EQ and level (each channel)\n• Effects loop\n• Dimensions: 21.7”L x 20.9”H x 16.1”D\n• Weight: 41.9 lbs",
@@ -93,7 +100,13 @@ var app = angular.module('andale')
 			"warranty": "3 years"
 		}, {
 			"brand": "acoustic",
-			"images": ["https://acousticamplification.com/wp-content/uploads/2014/11/A20-Acoustic-Amplification-1.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A20-Acoustic-Amplification-2.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A20-Acoustic-Amplification-3.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A20-Acoustic-Amplification-5.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A20-Acoustic-Amplification-4.jpg"],
+			"images": [
+        "../images/A20-Acoustic-Amplification-1.jpg",
+        "../images/A20-Acoustic-Amplification-2.jpg",
+        "../images/A20-Acoustic-Amplification-3.jpg",
+        "../images/A20-Acoustic-Amplification-4.jpg",
+        "../images/A20-Acoustic-Amplification-5.jpg"
+      ],
 			"manualUrl": "https://acousticamplification.com/wp-content/uploads/2014/11/usermanual/A20-Manual.pdf",
 			"name": "A20",
 			"specs": "• 20 watts\n• 8″ full-range co-axial speaker\n• Dual inputs with combo XLR-1/4″ jacks\n• 3-band EQ\n• Ported cabinet design\n• Digital chorus with adjustable rate\n• Digital reverb with adjustable level\n• Vari-control feedback elimination\n• Full-feature direct output with ground lift, pre-post EQ and level\n• Effects loop\n• Dimensions: 14.4″H x 13.0″W x 15.8″D\n• Weight: 21.5 lbs.",
@@ -102,30 +115,17 @@ var app = angular.module('andale')
 			"warranty": "3 years"
 		}, {
 			"brand": "acoustic",
-			"images": ["https://acousticamplification.com/wp-content/uploads/2014/11/A40-1-main.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A40-2-main.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A40-3-main.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/A40-4-main.jpg"],
+			"images": [
+        "../images/A40-1-main.jpg",
+        "../images/A40-2-main.jpg",
+        "../images/A40-3-main.jpg",
+        "../images/A40-4-main.jpg"
+      ],
 			"manualUrl": "https://acousticamplification.com/wp-content/uploads/2014/11/usermanual/A40-Manual.pdf",
 			"name": "A40",
 			"specs": "• 40 watts\n• 8″ full-range co-axial speaker\n• Dual inputs with combo XLR-1/4″ jacks\n• Ported cabinet design\n• 3-band EQ with sweepable mid-range\n• Digital effects user editing\n• Auxiliary Bluetooth connectivity for instant backing tracks\n• Automatic feedback elimination circuit\n• Full-feature direct output with ground lift, pre-post EQ and level\n• Effects loops\n• Dimensions: 18.3″ H x 17.3″ W x 16.5″ D\n• Weight: 28.7 lbs.",
 			"subtitle": "40w Amp w/ DSP Effects & Bluetooth",
 			"url": "https://acousticamplification.com/product/a40/",
-			"warranty": "3 years"
-		}, {
-			"brand": "acoustic",
-			"images": ["https://acousticamplification.com/wp-content/uploads/2014/11/AB50-Acoustic-Amplification-1.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/AB50-Acoustic-Amplification-2.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/AB50-Acoustic-Amplification-6.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/AB50-Acoustic-Amplification-5.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/AB50-Acoustic-Amplification-4.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/AB50-Acoustic-Amplification-3.jpg"],
-			"manualUrl": "https://acousticamplification.com/wp-content/uploads/2014/11/usermanual/AB50-Manual.pdf",
-			"name": "AB50",
-			"specs": "• Power: 50W / 8ohm\n• EQ Centers: 60 Hz, 800 Hz, 10kHz\n• Channels: 2\n• AC Power: 80W\n• Speaker: 10″ speaker & 2″ tweeter\n• Dimensions: 15.5″D x 15.5″W x 16″H\n• Weight: 33lbs.",
-			"subtitle": "50w 1x10 Acoustic-Electric Bass Amp",
-			"url": "https://acousticamplification.com/product/ab50/",
-			"warranty": "3 years"
-		}, {
-			"brand": "acoustic",
-			"images": ["https://acousticamplification.com/wp-content/uploads/2014/11/B15-Acoustic-Amplification-1.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/B15-Acoustic-Amplification-2.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/B15-Acoustic-Amplification-5.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/B15-Acoustic-Amplification-4.jpg", "https://acousticamplification.com/wp-content/uploads/2014/11/B15-Acoustic-Amplification-3.jpg"],
-			"manualUrl": "https://acousticamplification.com/wp-content/uploads/2014/11/usermanual/B15-Manual.pdf",
-			"name": "B15",
-			"specs": "• Controls: Volume, Overdrive (switchable), Overdrive Level\n• EQ: 3 band w/shape control\n• Aux/MP3 In: 1/8″ stereo\n• Headphone Jack: 1/8″ stereo\n• Other: ″Acousti-Comp″ built-in compressor\n• Product Dimensions: 13.8″W x 10.4″D x 18.1″H\n• Product Weight: 23 lbs.\n• Shipping Dimensions: 16.8″W x 12.2″D x 20.5″H\n• Shipping Weight: 27.6 lbs.",
-			"subtitle": "15w 1x10 Bass Combo Amp",
-			"url": "https://acousticamplification.com/product/b15/",
 			"warranty": "3 years"
 		}],
 		"showName": false,
