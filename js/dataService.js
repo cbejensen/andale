@@ -136,7 +136,10 @@ var app = angular.module('andale')
 		"phone": "888-286-1809",
 		"products": [{
 			"brand": "harbinger",
-			"images": ["https://harbingerproaudio.com/wp-content/uploads/2018/08/Harbinger-APS12-RT.jpg","https://harbingerproaudio.com/wp-content/uploads/2018/08/Harbinger-APS12-BK-Panel.jpg"],
+			"images": [
+        "../images/Harbinger-APS12-BK-Panel.jpg",
+        "../images/Harbinger-APS12-RT.jpg"
+      ],
 			"manualUrl": "https://harbingerproaudio.com/aps12-two-way-150-watt-speaker-system/#dflip-df_650/1/",
 			"name": "APS12",
 			"specs": "SYSTEM\n• 3 Channel Mic/Line Mixer\n• Frequency Response (-3dB): 45Hz – 18kHz\n• Frequency Range (-6dB): 40Hz – 20kHz\n• Max SPL Long-term @1m: 97dB\n• Max SPL Peak @1m: 119dB\n• Crossover: passive, 18dB/oct @ 3.5kHz\nAUDIO\n• MIC input\n• Input type: 2 bal. XLR & 2 unbal. ¼”\n• Input Impedance: 3k ohms\n• Input sensitivity: –46dBu\n• Line Input\n• Input type: XLR bal. / RCA unbal.\n• Input impedance: 10k ohms\n• Input sensitivity: –26 dBu\nEQ\n• Type: 5-band graphic Equalizer\n• Frequency: 250Hz /500Hz/1kHz/4kHz/8kHz\n• Equalize range: –12dB/+12dB\n• Power Amplifier\n• Rated output power: 135W\n• Max output power: 150W\n• Power supply: 110V/60 Hz\n• Max Power consumption: 276VA\n• Rated THD: <0.5% (20Hz – 20kHz)\n• Frequency response: +1/-2dB (20Hz – 20kHz)\n• Cooling: Convection Extrusion\n• Design: Class A/B",
@@ -145,7 +148,10 @@ var app = angular.module('andale')
 			"warranty": "2 years"
 		}, {
 			"brand": "harbinger",
-			"images": ["https://harbingerproaudio.com/wp-content/uploads/2018/08/Harbinger-APS15-RT.jpg", "https://harbingerproaudio.com/wp-content/uploads/2018/08/Harbinger-APS15-BK-Panel.jpg"],
+			"images": [
+        "../images/Harbinger-APS15-BK-Panel.jpg",
+        "../images/Harbinger-APS15-RT.jpg"
+      ],
 			"manualUrl": "https://harbingerproaudio.com/aps15-15-two-way-150-watt-speaker-system/#dflip-df_650/1/",
 			"name": "APS15",
 			"specs": "SYSTEM\n• Frequency Response (-3dB): 45 Hz-18 kHz\n• Frequency Range (-6dB): 40 Hz-20 kHz\n• Max SPL Long-term @1m: 98 dB\n• Max SPL Peak @1m: 121 dB\n• Crossover: passive, 18 dB/oct @ 3.5 kHz\nAUDIO\n• MIC input\n• Input type: 2 bal. XLR & 2 unbal. 1/4″\n• Input Impedance: 3k ohms\n• Input sensitivity: -46 dBu\n• Line Input\n• Input type: XLR bal. / RCA unbal.\n• Input impedance: 10k ohms\n• Input sensitivity: -26 dBu\nEQ\n• Type: 5-band graphic Equalizer\n• Frequency: 250 Hz/500 Hz/1 kHz/4 kHz/8 kHz\n• Equalize range: -12dB/+12dB\n• Rated output power: 180W\n• Max output power: 216W\n• Power supply: 110V/60 Hz\n• Max Power consumption: 276VA\n• Rated THD: <0.5% (20 Hz – 20 kHz)\n• Frequency response:+1/-2dB (20 Hz – 20k Hz)\n• Cooling: Convection Extrusion\n• Design: Class A/B",
@@ -154,7 +160,11 @@ var app = angular.module('andale')
 			"warranty": "2 years"
 		}, {
 			"brand": "harbinger",
-			"images": ["https://harbingerproaudio.com/wp-content/uploads/2018/07/Harbinger_MuV_M120_wspeaker.jpg", "https://harbingerproaudio.com/wp-content/uploads/2018/08/Harbinger-MuV-M120-Head.jpg", "https://harbingerproaudio.com/wp-content/uploads/2018/07/Harbinger_MuV_M120-FT-Mounted-short.jpg"],
+			"images": [
+        "../images/Harbinger-MuV-M120-Head.jpg",
+        "../images/Harbinger_MuV_M120-FT-Mounted-short.jpg",
+        "../images/Harbinger_MuV_M120_wspeaker.jpg"
+      ],
 			"manualUrl": "https://harbingerproaudio.com/m120-portable-pa-system/#dflip-df_297/1/",
 			"name": "M120",
 			"specs": "• 120 watts\n• 4 input channels with 2-band EQ and FX send\n• Clip LED\n• Built-in digital delay\n• 3-band Master EQ\n• Aux-in for MP3 players\n• Record Out\n• Two 12” two-way loudspeakers\n• 1–3/8” pole mounts\n• Two 20’ speaker cables\n• Speaker stands not included\nSPECIFICATIONS\nAMPLIFIER \n• Power Amp: Max Output Power 120 Watts (@ 4Ω)\n• Inputs: Balanced mono: 4 Mic/line channels 2 Aux Inputs\n• Line Output: Record Out: RCA Pair\n• Channel Strips (4): Volume Controls: Rotary\n• Master Section: Rotary Fader: Master\n• Built-in Digital Effect: Digital Delay: (2–150ms)\n• Noise: Master output (all faders down): –86dBu Power amp output (all faders down): –55dBu\n• THD: @120 watts: 4Ω <1%\n• Crosstalk (1KHz@ 0dBu): Channel fader down < –63dB\n• Frequency Response (Mic input to output): 20Hz to 20kHz line level output @+4dBu into 600Ω +1/–3dB\n• Sensitivity @ mixer output +4dBu: 1Mic/Line: –50dBu/–35dBu Tape in: –6dBu\n• Channel Equalization: 2 band +/–15dB Low EQ: 80Hz Shelving Hi EQ: 12kHz Shelving\n• Master Equalization: 3 band +/–15dB Low EQ: 80Hz Shelving Mid EQ: 1kHz Peak Hi EQ: 12kHz Shelving\n• Microphone Preamp E.I.N.: (150Ω terminated, max gain) –122dBm\n• Power Requirements: AC120V ~ 50–60Hz\n• Dimensions: H 8.85” x W 18.9” x D 5.9”\n• Weight: 19 lbs.\nSPEAKER \n• RMS power handling: 80W / 8Ω\n• Peak power handling: 110W / 8Ω\n• Impedance load: 8Ω\n• Horn construction: Compression Driver\n• Woofer construction: 12” cone diaphragm\n• Magnet weight: 30 oz\n• CROSSOVER: 3.8K / -12dB per octave\n• Frequency response: 40HZ–20kHz\n• Max SPL: 116dB\n• Dimensions of speaker box: H 23.2” x W 14.4” x D 12.8”\n• Net weight: 25.5 lbs. (per speaker box)\n\nNOTE: The max power (peak) of each speaker box is 80W in order to satisfy the powered mixer’s output (max in 80W/8Ω) and to avoid speaker burnout during peak output.",
