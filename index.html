@@ -89,24 +89,29 @@
           <button class="col-xs-3 col-xs-offset-2 btn btn-default" ng-click="newProductForm = true">+ Product</button>
         </div>
         <div class="command-tray-cover red-bg"></div>
-        <a href="#">
-          <div class="command-icon-container col-xs-1 text-center">
-            <span class="command-icon arrow-hide glyphicon glyphicon-menu-up"></span>
-          </div>
-        </a>
-        <div class="command-search-container col-xs-12 pull-right">
-          <div class="input-group">
-            <span class="search-master-icon glyphicon glyphicon-search"></span>
-            <input class="form-control" ng-model="search" placeholder="Search brand or product"/>
-            <span class="command-menu input-group-btn">
-              <button class="btn btn-primary" ng-click="showCommandTray()">
-                <span class="glyphicon glyphicon-menu-hamburger"></span>
-              </button>
-            </span>
-            <span class="command-buttons input-group-btn">
-              <button class="btn btn-primary" ng-click="newBrandForm = true">Add Brand</button>
-              <button class="btn btn-primary" ng-click="newProductForm = true">Add Product</button>
-            </span>
+        
+        <div class="container">
+          <div class="row">
+            <a href="#">
+              <div class="command-icon-container col-xs-1 text-center">
+                <span class="command-icon arrow-hide glyphicon glyphicon-menu-up"></span>
+              </div>
+            </a>
+            <div class="command-search-container">
+              <div class="input-group">
+                <span class="search-master-icon glyphicon glyphicon-search"></span>
+                <input class="search-input form-control" ng-model="search" placeholder="Search brand or product"/>
+                <span class="command-menu input-group-btn">
+                  <button class="btn btn-primary" ng-click="showCommandTray()">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                  </button>
+                </span>
+                <span class="command-buttons input-group-btn">
+                  <button class="btn btn-primary" ng-click="newBrandForm = true">Add Brand</button>
+                  <button class="btn btn-primary" ng-click="newProductForm = true">Add Product</button>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -146,7 +151,7 @@
               </div>
               <div class="product-thumbnail-container">
                 <div class="product-thumbnail-box" ng-repeat="img in product.images track by $index" ng-click="productImgSelect(product, $index)">
-                  <img ng-src={{img}} render-thumbnail>
+                  <img ng-src={{img}} alt={{product.name}} render-thumbnail>
                 </div>
               </div>
             </div>

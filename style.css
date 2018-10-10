@@ -77,13 +77,8 @@ a {
 }
 
 .command-search-container {
-  top: 5px;
-}
-
-.command-search-container input {
-  font-size: 1.5em;
-  color: black;
-  padding-left: 30px;
+  width: 100%;
+  padding-top: 5px;
 }
 
 .command-tray {
@@ -439,6 +434,11 @@ h2 {
   background-color: #9F111B;
 }
 
+.search-input {
+  padding-left: 30px;
+  font-size: 2rem;
+}
+
 .search-master-icon {
   position: absolute;
   left: 5px;
@@ -454,11 +454,6 @@ h2 {
   left: 0;
 }
 
-.sticky .command-icon-container {
-  width: 8.33333%;
-	left: 7.5px;
-}
-
 .sticky .command-icon-container span {
   visibility: visible;
   opacity: 1;
@@ -468,6 +463,7 @@ h2 {
 .sticky .command-search-container {
   width: 91.66666667%;
   transition: width 0.4s;
+  float: right;
 }
 
 .subtitle {
